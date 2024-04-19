@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "nome": "Ana Silva",
+      "telefone": "11987654321",
+      "email": "ana.silva@empresa.com",
+      "segmento": "Tecnologia",
+      "cargo": "Gerente de Projetos",
+      "tamanhoDaEmpresa": "Média",
+      "produto": "IA",
+      "regiao": "Sudeste"
+    },
+    {
+      "id": 2,
+      "nome": "Carlos Souza",
+      "telefone": "21987654321",
+      "email": "carlos.souza@empresa.com",
+      "segmento": "Financeiro",
+      "cargo": "Analista Financeiro",
+      "tamanhoDaEmpresa": "Grande",
+      "produto": "Marketing",
+      "regiao": "Nordeste"
+    },
+    {
+      "id": 3,
+      "nome": "Julia Martins",
+      "telefone": "31987654321",
+      "email": "julia.martins@empresa.com",
+      "segmento": "Saúde",
+      "cargo": "Consultora de Saúde",
+      "tamanhoDaEmpresa": "Pequena",
+      "produto": "Tableau",
+      "regiao": "Centro-Oeste"
+    },
+    {
+      "id": 4,
+      "nome": "Pedro Alvares",
+      "telefone": "41987654321",
+      "email": "pedro.alvares@empresa.com",
+      "segmento": "Educação",
+      "cargo": "Coordenador Pedagógico",
+      "tamanhoDaEmpresa": "Média",
+      "produto": "Commerce",
+      "regiao": "Sul"
+    },
+    {
+      "id": 5,
+      "nome": "Fernanda Rocha",
+      "telefone": "51987654321",
+      "email": "fernanda.rocha@empresa.com",
+      "segmento": "Varejo",
+      "cargo": "Gerente de Vendas",
+      "tamanhoDaEmpresa": "Grande",
+      "produto": "Data Cloud",
+      "regiao": "Norte"
+    }
+]
