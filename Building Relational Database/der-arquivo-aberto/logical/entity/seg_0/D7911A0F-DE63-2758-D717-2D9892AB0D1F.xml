@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D7911A0F-DE63-2758-D717-2D9892AB0D1F" name="Tamanho_Empresa">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:29:09 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_tam_emp" id="DD54C21B-CB4F-D93B-4782-5F07755F696C">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:29:15 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="desc_tam_emp" id="1920481A-4BD9-B5AE-6548-B59245424A57">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:29:29 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40</dataTypeSize>
+<ownDataTypeParameters>40,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="ACBE2569-6CFC-A615-BA20-50501BAD23E3" name="Tamanho_Empresa PK">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:29:27 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DD54C21B-CB4F-D93B-4782-5F07755F696C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

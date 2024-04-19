@@ -1,0 +1,130 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C418CBD8-DC8C-85DD-FD54-58CD46A335DE" name="Questionario">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:34:37 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_ques" id="B5DCCDFA-11E3-C637-304D-716377E9527D">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:34:54 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nome_ques" id="BAAE7E6D-9A8D-E594-19F9-EDB1E73A9C08">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:35:11 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80</dataTypeSize>
+<ownDataTypeParameters>80,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tel_ques" id="51203217-2F20-61C3-00EB-9C191C7AA3AF">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:35:20 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>20</dataTypePrecision>
+<ownDataTypeParameters>,20,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="seg_ques" id="7C0E0D4F-5E73-F4DD-79B9-2E1E7ECD6870">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:35:31 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80</dataTypeSize>
+<ownDataTypeParameters>80,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="conhece_sales_ques" id="CD484A2C-23AF-5B81-9707-051183EDA7FF">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:35:46 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nec_emp_ques" id="A4C511AF-D2A2-D384-618B-B0606277BE25">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:36:07 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_prod" id="A5B55AD1-EFB0-595A-EAB4-8E349CD4AFA4">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:37:51 UTC</createdTime>
+<generatorID>859230E9-A59F-B531-46F3-D73DBE6293E3</generatorID>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<referedAttribute>2DC09E6B-0617-4283-5818-6857A2420581</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="EC2B7FDD-658F-75BF-AE26-A4BCC972A32C" name="Questionario PK">
+<createdBy>patricianaomi</createdBy>
+<createdTime>2024-04-18 23:35:03 UTC</createdTime>
+<ownerDesignName>finalizado</ownerDesignName>
+<engineerTo>
+<item key="62B02635-8A6F-CD2C-77D1-3EA700312478" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B5DCCDFA-11E3-C637-304D-716377E9527D</attributeRef>
+<attributeRef>A5B55AD1-EFB0-595A-EAB4-8E349CD4AFA4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
