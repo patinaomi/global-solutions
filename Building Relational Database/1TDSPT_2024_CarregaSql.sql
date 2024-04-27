@@ -1,4 +1,22 @@
-CREATE TABLE contato (
+-- INTEGRANTES
+-- Claudio Bispo RM: 553472
+-- Patricia Naomi RM:552981
+-- Sara Ingrid RM: 554021
+
+-- Caso a tabela já exista ele será deletada
+DROP TABLE Contato CASCADE CONSTRAINTS;
+DROP TABLE Estado CASCADE CONSTRAINTS;
+DROP TABLE Genero CASCADE CONSTRAINTS;
+DROP TABLE Login CASCADE CONSTRAINTS;
+DROP TABLE Produto CASCADE CONSTRAINTS;
+DROP TABLE Questionario CASCADE CONSTRAINTS;
+DROP TABLE Tamanho_Empresa CASCADE CONSTRAINTS;
+DROP TABLE Visitante CASCADE CONSTRAINTS;
+
+-- Criação das tabelas
+
+-- Criação da tabela Contato
+CREATE TABLE Contato (
     id_con                     INTEGER NOT NULL,
     nome_con                   VARCHAR2(60) NOT NULL,
     email_con                  VARCHAR2(70) NOT NULL,
@@ -12,23 +30,29 @@ CREATE TABLE contato (
     tamanho_empresa_id_tam_emp INTEGER NOT NULL
 );
 
-ALTER TABLE contato ADD CONSTRAINT contato_pk PRIMARY KEY ( id_con );
+-- Primary Key da tabela Contato
+ALTER TABLE Contato ADD CONSTRAINT contato_pk PRIMARY KEY ( id_con );
 
-CREATE TABLE estado (
+-- Criação da tabela Estado
+CREATE TABLE Estado (
     id_est    INTEGER NOT NULL,
     sigla_est CHAR(2) NOT NULL
 );
 
-ALTER TABLE estado ADD CONSTRAINT estado_pk PRIMARY KEY ( id_est );
+-- Primary Key da tabela Estado
+ALTER TABLE Estado ADD CONSTRAINT estado_pk PRIMARY KEY ( id_est );
 
-CREATE TABLE genero (
+-- Criação da tabela Genero
+CREATE TABLE Genero (
     id_gen   INTEGER NOT NULL,
     desc_gen VARCHAR2(60) NOT NULL
 );
 
-ALTER TABLE genero ADD CONSTRAINT genero_pk PRIMARY KEY ( id_gen );
+-- Primary Key da tabela Genero
+ALTER TABLE Genero ADD CONSTRAINT genero_pk PRIMARY KEY ( id_gen );
 
-CREATE TABLE login (
+-- Criação da tabela Login
+CREATE TABLE Login (
     id_login                   INTEGER NOT NULL,
     nome_login                 VARCHAR2(60) NOT NULL,
     sobrenome_login            VARCHAR2(60) NOT NULL,
@@ -42,18 +66,22 @@ CREATE TABLE login (
     visitante_id_visit         INTEGER NOT NULL
 );
 
-ALTER TABLE login ADD CONSTRAINT login_pk PRIMARY KEY ( id_login );
+-- Primary Key da tabela Login
+ALTER TABLE Login ADD CONSTRAINT login_pk PRIMARY KEY ( id_login );
 
-CREATE TABLE produto (
+-- Criação da tabela Produto
+CREATE TABLE Produto (
     id_prod   INTEGER NOT NULL,
     nome_prod VARCHAR2(80) NOT NULL,
     desc_prod VARCHAR2(600) NOT NULL,
     cat_prod  VARCHAR2(80) NOT NULL
 );
 
-ALTER TABLE produto ADD CONSTRAINT produto_pk PRIMARY KEY ( id_prod );
+-- Primary Key da tabela Produto
+ALTER TABLE Produto ADD CONSTRAINT produto_pk PRIMARY KEY ( id_prod );
 
-CREATE TABLE questionario (
+-- Criação da tabela Questionario
+CREATE TABLE Questionario (
     id_ques            INTEGER NOT NULL,
     nome_ques          VARCHAR2(80),
     tel_ques           NUMBER(20),
@@ -63,55 +91,64 @@ CREATE TABLE questionario (
     produto_id_prod    INTEGER NOT NULL
 );
 
-ALTER TABLE questionario ADD CONSTRAINT questionario_pk PRIMARY KEY ( id_ques );
+-- Primary Key da tabela Questionario
+ALTER TABLE Questionario ADD CONSTRAINT questionario_pk PRIMARY KEY ( id_ques );
 
-CREATE TABLE tamanho_empresa (
+-- Criação da tabela Tamanho_Empresa
+CREATE TABLE Tamanho_Empresa (
     id_tam_emp   INTEGER NOT NULL,
     desc_tam_emp VARCHAR2(40) NOT NULL
 );
 
-ALTER TABLE tamanho_empresa ADD CONSTRAINT tamanho_empresa_pk PRIMARY KEY ( id_tam_emp );
+-- Primary Key da tabela Tamanho_Empresa
+ALTER TABLE Tamanho_Empresa ADD CONSTRAINT tamanho_empresa_pk PRIMARY KEY ( id_tam_emp );
 
-CREATE TABLE visitante (
+-- Criação da tabela Visitante
+CREATE TABLE Visitante (
     id_visit        INTEGER NOT NULL,
     tempo_ent_visit TIMESTAMP(0) NOT NULL,
     tempo_sai_visit TIMESTAMP(0) NOT NULL
 );
 
-ALTER TABLE visitante ADD CONSTRAINT visitante_pk PRIMARY KEY ( id_visit );
+-- Primary Key da tabela Visitante
+ALTER TABLE Visitante ADD CONSTRAINT visitante_pk PRIMARY KEY ( id_visit );
 
-ALTER TABLE contato
+-- Inserção de Foreign Key nas tabelas
+
+-- FK da tabela Contato
+ALTER TABLE Contato
     ADD CONSTRAINT contato_estado_fk FOREIGN KEY ( estado_id_est )
-        REFERENCES estado ( id_est );
+        REFERENCES Estado ( id_est );
 
-ALTER TABLE contato
+ALTER TABLE Contato
     ADD CONSTRAINT contato_produto_fk FOREIGN KEY ( produto_id_prod )
-        REFERENCES produto ( id_prod );
+        REFERENCES Produto ( id_prod );
 
-ALTER TABLE contato
+ALTER TABLE Contato
     ADD CONSTRAINT contato_tamanho_empresa_fk FOREIGN KEY ( tamanho_empresa_id_tam_emp )
-        REFERENCES tamanho_empresa ( id_tam_emp );
+        REFERENCES Tamanho_Empresa ( id_tam_emp );
 
-ALTER TABLE contato
+ALTER TABLE Contato
     ADD CONSTRAINT contato_visitante_fk FOREIGN KEY ( visitante_id_visit )
-        REFERENCES visitante ( id_visit );
+        REFERENCES Visitante ( id_visit );
 
-ALTER TABLE login
+ALTER TABLE Login
     ADD CONSTRAINT login_estado_fk FOREIGN KEY ( estado_id_est )
-        REFERENCES estado ( id_est );
+        REFERENCES Estado ( id_est );
 
-ALTER TABLE login
+ALTER TABLE Login
     ADD CONSTRAINT login_genero_fk FOREIGN KEY ( genero_id_gen )
-        REFERENCES genero ( id_gen );
+        REFERENCES Genero ( id_gen );
 
-ALTER TABLE login
+ALTER TABLE Login
     ADD CONSTRAINT login_tamanho_empresa_fk FOREIGN KEY ( tamanho_empresa_id_tam_emp )
-        REFERENCES tamanho_empresa ( id_tam_emp );
+        REFERENCES Tamanho_Empresa ( id_tam_emp );
 
-ALTER TABLE login
+ALTER TABLE Login
     ADD CONSTRAINT login_visitante_fk FOREIGN KEY ( visitante_id_visit )
-        REFERENCES visitante ( id_visit );
+        REFERENCES Visitante ( id_visit );
 
-ALTER TABLE questionario
+ALTER TABLE Questionario
     ADD CONSTRAINT questionario_produto_fk FOREIGN KEY ( produto_id_prod )
-        REFERENCES produto ( id_prod );
+        REFERENCES Produto ( id_prod );
+
