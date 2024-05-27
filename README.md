@@ -1,24 +1,24 @@
 
 
-# Challenge Salesforce
+
+# Global Solutions
 <p align="center">  <img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>  </p>
 
 
-## Challenge Salesforce
-
-Repositório criado para a organização e hospedagem dos projetos de Challenge da FIAP, correspondentes à sprint 4.
+## Global Solutions
+Repositório criado para a organização e hospedagem dos projetos da FIAP, correspondentes à Global Solutions.
 
 ## Índice
- * [Challenge Salesforce](#challenge-salesforce)
+ * [Global Solutions](#global-solutions)
  * [Índice](#índice)
- * [Video Front End](#Video-Front-End)
+ * [Video Pitch](#Video-Pitch)
  * [Desafios e Problemas](#%EF%B8%8F-desafios-e-problemas)
  * [Solução Apresentada](#-solução-apresentada)
  * [Disciplinas](#%EF%B8%8F-disciplinas)
  * [Tecnologias Utilizadas](#%EF%B8%8F-tecnologias-utilizadas)
  * [Equipe](#-equipe)
 
-## 📽️ Video Front End
+## 📽️ Video Pitch
 [Link Video](https://youtu.be/Z1KV7noWuVY)
 
 ## ⁉️ Desafios e Problemas
@@ -30,12 +30,12 @@ Repositório criado para a organização e hospedagem dos projetos de Challenge 
 [:arrow_up: voltar para o índice :arrow_up:](#índice)
 
 ## 🗂️ Disciplinas
-* [AI & Chatbot](https://github.com/patinaomi/sprint-3-fiap/tree/main/AI%20%26%20Chatbot)
-* [Building Relational Database](https://github.com/patinaomi/sprint-3-fiap/tree/main/Building%20Relational%20Database)
-* [Computational Thinking Using Python](https://github.com/patinaomi/sprint-3-fiap/tree/main/Computational%20Thinking%20Using%20Python)
-* [Domain Driven Design](https://github.com/patinaomi/sprint-3-fiap/tree/main/Domain%20Driven%20Design)
-* [Responsive Web Development](https://github.com/patinaomi/sprint-3-fiap/tree/main/Responsive%20Web%20Development)
-* [Software Design & Total Experience](https://github.com/patinaomi/sprint-3-fiap/tree/main/Software%20Design%20%26%20Total%20Experience)
+* [AI & Chatbot](https://github.com/patinaomi/global-solutions/tree/main/AI%20%26%20Chatbot)
+* [Building Relational Database](https://github.com/patinaomi/global-solutions/tree/main/Building%20Relational%20Database)
+* [Computational Thinking Using Python](https://github.com/patinaomi/global-solutions/tree/main/Computational%20Thinking%20Using%20Python)
+* [Domain Driven Design](https://github.com/patinaomi/global-solutions/tree/main/Domain%20Driven%20Design)
+* [Responsive Web Development](https://github.com/patinaomi/global-solutions/tree/main/Responsive%20Web%20Development)
+* [Software Design & Total Experience](https://github.com/patinaomi/global-solutions/tree/main/Software%20Design%20%26%20Total%20Ux)
 
 [:arrow_up: voltar para o índice :arrow_up:](#índice)
 
@@ -47,7 +47,7 @@ Repositório criado para a organização e hospedagem dos projetos de Challenge 
 ## 🧑‍🤝‍🧑 Equipe
 
 
-| <h3>Claudio Bispo</h3><img src="https://avatars.githubusercontent.com/u/110735259?v=4" width=180px> <h6>RM553472</h6> <a href="https://github.com/claubis"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"></a> <a href="https://www.linkedin.com/in/claudiosbispo"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"></a><a href="https://www.instagram.com/_claudiobispo/"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white"></a>|<h3>Patricia Naomi</h3> <img src="https://avatars.githubusercontent.com/u/132932532?v=4" width=180px><h6>RM552981</h6> <a href="https://github.com/patinaomi"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"></a> <a href="https://www.linkedin.com/in/patinaomi/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"></a> <a href="https://www.instagram.com/naomipati/"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white"></a>| <h3>Sara Ingrid</h3> <img src="https://avatars.githubusercontent.com/u/143559812?v=4" width=180px><h6>RM554021</h6><a href="https://github.com/saraingrid"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"> </a><a href="https://www.linkedin.com/in/sara-ingrid-pereira"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"></a><a href="https://www.instagram.com/saraingridp/"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white"></a>|
+| <h3>Claudio Bispo</h3><img src="https://avatars.githubusercontent.com/u/110735259?v=4" width=180px> <h6>RM553472</h6> <a href="https://github.com/claubis"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"></a> <a href="https://www.linkedin.com/in/claudiosbispo"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"></a><a href="https://www.instagram.com/_claudiobispo/"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white"></a>|<h3>Patricia Naomi</h3> <img src="https://avatars.githubusercontent.com/u/132932532?v=4" width=180px><h6>RM552981</h6> <a href="https://github.com/patinaomi"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"></a> <a href="https://www.linkedin.com/in/patinaomi/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"></a> <a href="https://www.instagram.com/naomipati/"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white"></a>| <h3>Sabrina Café</h3> <img src="https://avatars.githubusercontent.com/u/107332854?v=4" width=180px><h6>RM553568</h6><a href="https://github.com/sabrinacafe"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"> </a><a href="https://www.linkedin.com/in/sabrina-da-motta-caf%C3%A9-3249152a8/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"></a><a href="https://www.instagram.com/sabis_cafe/"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white"></a>|
 |--|--|--|
 
 [:arrow_up: voltar para o índice :arrow_up:](#índice)
