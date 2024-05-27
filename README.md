@@ -11,7 +11,7 @@ Repositório criado para a organização e hospedagem dos projetos da FIAP, corr
 ## Índice
  * [Global Solutions](#global-solutions)
  * [Índice](#índice)
- * [Video Pitch](#Video-Pitch)
+ * [Video Pitch](#%EF%B8%8F-video-pitch)
  * [Desafios e Problemas](#%EF%B8%8F-desafios-e-problemas)
  * [Solução Apresentada](#-solução-apresentada)
  * [Disciplinas](#%EF%B8%8F-disciplinas)
