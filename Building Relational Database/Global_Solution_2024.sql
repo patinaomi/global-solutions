@@ -1,20 +1,21 @@
 -- Criação da tabela Usuarios
 CREATE TABLE USUARIO ( 
-id NUMBER(2) PRIMARY KEY, 
+id_usuario NUMBER(2) PRIMARY KEY, 
 nome VARCHAR(255) NOT NULL, 
 email VARCHAR(255) UNIQUE NOT NULL, 
 senha VARCHAR(255));
 --tipo_usuario ENUM('login', 'parceiro', 'fornecedor', 'Investidor') NOT NULL );
+--id_tipo_usuario
 
 -- Criação da tabela TipoUsuario
-CREATE TABLE TIPOUSUARIO ( 
-id NUMBER(2) PRIMARY KEY, 
+CREATE TABLE TIPOUSUARIO (
+id_tipo_usuario NUMBER(2) PRIMARY KEY, 
 descricao VARCHAR(255) NOT NULL );
 
 -- Criação da tabela Login
 CREATE TABLE LOGIN ( 
-id INT PRIMARY KEY, 
-usuario_id INT NOT NULL, 
+id_login INT PRIMARY KEY, 
+id_usuario INT NOT NULL,
 email VARCHAR(255) NOT NULL, 
 senha VARCHAR(255), 
 data_login DATE NOT NULL, 
@@ -24,7 +25,7 @@ tipo_login INT NOT NULL);
 
 -- Criação da tabela TipoLogin
 CREATE TABLE TIPOLOGIN ( 
-id INT PRIMARY KEY, 
+id_tipo_login INT PRIMARY KEY, 
 descricao VARCHAR(255) NOT NULL );
 
 -- Criação da tabela SolicitacaoSuporte
