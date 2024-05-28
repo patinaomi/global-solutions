@@ -6,12 +6,12 @@ Projeto Final do primeiro semestre da Faculdade de ADS
 
 # Tabelas Propostas para este Projeto
 
-1. Usuarios
+1. Usuario
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 nome: VARCHAR(255)
 email: VARCHAR(255), UNIQUE
 senha: VARCHAR(255)
-tipo_usuario: ENUM('login', 'parceiro', 'fornecedor', 'financiador')
+tipo_usuario: ENUM('login', 'parceiro', 'fornecedor', 'Investidor')
 Descrição: Armazena informações dos usuários, incluindo diferentes tipos de usuários:
 
 Usuario padrão: Objetivo é apenas realizar o login.
@@ -35,6 +35,7 @@ senha: VARCHAR(255)
 data_login: DATE
 tipo_login: INT, FOREIGN KEY REFERENCES TipoLogin(id)
 status: ENUM('sucesso', 'falha')
+
 Descrição: Registra as informações de logins efetuados pelos usuários, tanto pelos cadastros internos quanto pela plataforma do Google.
 
 4. TipoLogin
@@ -48,7 +49,7 @@ ID 2: Login pela plataforma do Google
 5. SolicitacaoSuporte
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 usuario_id: INT, FOREIGN KEY REFERENCES Usuarios(id)
-tipo_marcacao: ENUM('animal', 'lixo', 'evento')
+tipo_marcacao: ENUM('animal', 'lixo')
 descricao: TEXT
 localizacao_origem: VARCHAR(255)
 data: DATE
@@ -57,7 +58,7 @@ lixo_id: INT, FOREIGN KEY REFERENCES TiposLixo(id) (opcional, NULL se não for l
 
 Descrição: Armazena dados de solicitações de suporte, indicando onde um animal está encalhado, onde há lixo que pode poluir uma área, e onde a prefeitura pode atuar com mais rapidez e precisão. Inclui referências às tabelas auxiliares de animais e tipos de lixo para informações detalhadas.
 
-6. Animais
+6. Animal
    
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 nome_comum: VARCHAR(255)
@@ -66,7 +67,7 @@ descricao: TEXT
 
 Descrição: Armazena informações detalhadas sobre os animais que podem ser encontrados encalhados.
 
-7. TiposLixo
+7. Poluente (incidente que vai mostrar o tipo de lixo)?
 
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 tipo: VARCHAR(255)
@@ -74,68 +75,54 @@ descricao: TEXT
 
 Descrição: Armazena informações detalhadas sobre os tipos de lixo que podem poluir áreas.
 
-8. Categorias
+8. Categoria
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 nome: VARCHAR(255)
 descricao: TEXT
 
 Descrição: Armazena diferentes categorias de marcações ou eventos, como tipos específicos de animais, tipos de lixo, tipos de eventos, etc.
 
-9. Parceiros
+9. Parceiro
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 nome: VARCHAR(255)
 contato: VARCHAR(255)
 tipo_parceria: VARCHAR(255)
 Descrição: Armazena informações sobre parceiros que colaboram com o projeto.
 
-10. Fornecedores
+10. Fornecedor
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 nome: VARCHAR(255)
 contato: VARCHAR(255)
 tipo_servico: VARCHAR(255)
 Descrição: Armazena informações sobre fornecedores que fornecem materiais ou serviços.
 
-11. Financiadores
+11. Investidor
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 nome: VARCHAR(255)
 contato: VARCHAR(255)
 quantia_contribuida: DECIMAL(10, 2)
 Descrição: Armazena informações sobre financiadores que contribuem financeiramente.
 
-12 AtividadesVoluntarias
-id: INT, PRIMARY KEY, AUTO_INCREMENT
-nome_atividade: VARCHAR(255)
-descricao: TEXT
-data: DATE
-localizacao: VARCHAR(255)
-Descrição: Armazena informações sobre atividades voluntárias, incluindo participantes e descrições.
-
-13. Alertas
+/* Plus */
+13. Alerta
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 usuario_id: INT, FOREIGN KEY REFERENCES Usuarios(id)
 tipo_alerta: VARCHAR(255)
 mensagem: TEXT
 data_enviado: DATE
 lido: BOOLEAN
+
 Descrição: Armazena alertas enviados aos usuários sobre novas marcações, eventos ou atualizações importantes. Aqui eu pensei em usarmos a IA com Python para enviar mensagem no telegram avisando de atividades, calamidades, parceirias para todos os usuarios, como e feito nos EUA.
 
-14. Eventos
-id: INT, PRIMARY KEY, AUTO_INCREMENT
-nome: VARCHAR(255)
-data: DATE
-localizacao: VARCHAR(255)
-descricao: TEXT
-Descrição: Armazena informações sobre eventos.
-
-15. Investimentos
+16. Investimento
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 usuario_id: INT, FOREIGN KEY REFERENCES Usuarios(id)
-evento_id: INT, FOREIGN KEY REFERENCES Eventos(id)
 quantia: DECIMAL(10, 2)
 data: DATE
+
 Descrição: Armazena informações sobre investimentos feitos por usuários em eventos.
 
-16. Feedbacks
+17. Feedback
 
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 usuario_id: INT, FOREIGN KEY REFERENCES Usuarios(id)
@@ -143,7 +130,7 @@ descricao: TEXT
 data: DATE
 Descrição: Armazena informações sobre feedbacks fornecidos pelos usuários.
 
-17. SolicitacaoAjudaAnimais
+17. SolicitacaoAjudaAnimal - Complemento da tabela Alerta
     
 id: INT, PRIMARY KEY, AUTO_INCREMENT
 usuario_id: INT, FOREIGN KEY REFERENCES Usuarios(id)
@@ -555,7 +542,7 @@ CREATE TABLE Usuarios (
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     senha VARCHAR(255),
-    tipo_usuario ENUM('login', 'parceiro', 'fornecedor', 'financiador') NOT NULL
+    tipo_usuario ENUM('login', 'parceiro', 'fornecedor', 'Investidor') NOT NULL
 );
 
 -- Criação da tabela TipoUsuario
