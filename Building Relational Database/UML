@@ -1,0 +1,106 @@
+
+### Diagrama UML de Classes para o Banco de Dados
+
+1. **Classe `Usuario`**
+   - **Atributos:**
+     - `id_usuario: Number`
+     - `nome: String`
+     - `email: String`
+     - `telefone: String`
+     - `senha: String`
+
+   - **Relacionamentos:**
+     - Associado a `TipoUsuario` através de `id_tipo_usuario`.
+     - Associado a `Login` através de `id_usuario`.
+     - Associado a `SolicitacaoSuporte` através de `id_usuario`.
+     - Associado a `Alertas` através de `usuario_id`.
+     - Associado a `Feedbacks` através de `usuario_id`.
+
+2. **Classe `TipoUsuario`**
+
+   - **Atributos:**
+     - `id_tipo_usuario: Number`
+     - `descricao: String`
+
+3. **Classe `Login`**
+
+   - **Atributos:**
+     - `id_login: Number`
+     - `id_usuario: Number`
+     - `email: String`
+     - `senha: String`
+     - `data_login: Date`
+
+   - **Relacionamentos:**
+     - Associado a `Usuario` através de `id_usuario`.
+
+4. **Classe `SolicitacaoSuporte`**
+
+   - **Atributos:**
+     - `id_solicitacao: Number`
+     - `id_usuario: Number`
+     - `descricao: String`
+     - `telefone: String`
+     - `localizacao_origem: String`
+     - `data_solicitacao: Timestamp`
+
+   - **Relacionamentos:**
+     - Associado a `Usuario` através de `id_usuario`.
+     - Associado a `Animais` através de `id_animal`.
+     - Associado a `TipoResiduo` através de `id_tipo_residuo`.
+
+5. **Classe `Animais`**
+
+   - **Atributos:**
+     - `id_animal: Number`
+     - `nome_animal: String`
+     - `especie_animal: String`
+     - `descricao_animal: String`
+
+6. **Classe `TipoResiduo`**
+
+   - **Atributos:**
+     - `id_tipo_residuo: Number`
+     - `tipo: String`
+     - `descricao: String`
+
+7. **Classe `Alertas`**
+
+   - **Atributos:**
+     - `id_alerta: Number`
+     - `usuario_id: Number`
+     - `tipo_alerta: String`
+     - `mensagem: String`
+     - `data_enviado: Timestamp`
+
+   - **Relacionamentos:**
+     - Associado a `Usuario` através de `usuario_id`.
+
+8. **Classe `Feedbacks`**
+
+   - **Atributos:**
+     - `id_feedback: Number`
+     - `usuario_id: Number`
+     - `nome: String`
+     - `telefone: String`
+     - `email: String`
+     - `descricao: String`
+     - `data_feedback: Date`
+
+   - **Relacionamentos:**
+     - Associado a `Usuario` através de `usuario_id`.
+
+9. **Classe `Localizacao`**
+
+   - **Atributos:**
+     - `id_localizacao: Number`
+     - `cep: String`
+     - `estado: String`
+     - `cidade: String`
+     - `bairro: String`
+     - `rua: String`
+     - `complemento: String`
+     - `data_cadastro: Date`
+     - `longitude: Decimal`
+     - `latitude: Decimal`
+
