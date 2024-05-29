@@ -693,15 +693,7 @@ CREATE TABLE SolicitacaoAjudaAnimais (
 
 # DML: Imputação de Dados
 
-Usuario
-2. INSERT INTO Usuarios (nome, email, senha, tipo_usuario) VALUES
-('Alice', 'alice@example.com', 'Senha123!', 'login'),
-('Bob', 'bob@example.com', 'Senha123!', 'parceiro'),
-('Charlie', 'charlie@example.com', 'Senha123!', 'fornecedor'),
-('Dave', 'dave@example.com', 'Senha123!', 'financiador'),
-('Eve', 'eve@example.com', 'Senha123!', 'login');
 
-TipoUsuario
 
 
 
