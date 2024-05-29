@@ -37,6 +37,7 @@ id_usuario INT NOT NULL,  --Chave estrangeira
 --tipo_suporte 'animal', 'lixo' 
 descricao VARCHAR2(255), -- Descrição da situação. Motivo da solicitação.
 localizacao_origem VARCHAR(255) NOT NULL, -- Aqui pode ser só o CEP? Depois teremos uma tabelas com os locais para organizar para matéria de IA
+-- Aqui temos que ter no fomrulário a parte que o usuario pode colocar os dados do local ou usar a API para preencher automáticamente.
 data_solicitacao TIMESTAMP NOT NULL, 
 id_animal INT, -- Chave estrangeira
 id_tipo_residuo INT); -- Chave estrangeira
