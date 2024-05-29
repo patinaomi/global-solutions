@@ -11,8 +11,8 @@ Roadmap do nosso Projeto
 	4.	Fase 4: Marketing e Divulgação
 	5.	Fase 5: Lançamento e Escala
 	6.	Fase 6: Implementação de Business Intelligence (BI)
-	7.	Educação e Treinamento: So criar a ideia de que queremos fazer uma pagina com videos que ajudem o usuario a tomar algum acao ou para quem ligar. Isso podemos colocar no chatbot tambem
-  8. Aplicativo Mobile: A pati ja desenhou o prototipo na nossa pagina.
+	7.	Educação e Treinamento: So criar a ideia de que queremos fazer uma pagina com videos que ajudem o usuario a tomar algum acao ou para quem ligar. Isso podemos colocar no chatbot tambem. Pode crias duas sessoes com aqueles videos que a Sabrina mostrou, um de animal e outro de lixos.
+  	8. Aplicativo Mobile: A pati ja desenhou o prototipo na nossa pagina.
  	9.	Feedback Visual: Ja temos a ideia da nossa pagina.
 	10.	Comunidade e Engajamento: As acoes que vamos promover.
 
@@ -40,6 +40,7 @@ Objetivos:
 
 	1.	Criar um protótipo funcional do site/aplicativo.
 	2.	Testar funcionalidades básicas com usuários reais.
+	3.	Teremos alguns itens de acessibilidade que vai chamar a atencao do publico. Nao queremos deixa ninguem de fora.
 
 Tarefas:
 
@@ -55,7 +56,8 @@ Fase 3: Desenvolvimento e Integração de Funcionalidades Avançadas
 Objetivos:
 
 	1.	Implementar funcionalidades avançadas.
-	2.	Integração com parceiros e sistemas externos.
+	2.	Integração com parceiros e sistemas externos.	
+ 	3.	Falar que podemos criar uma API e disponibilizar os dados para o governo e seus meios de suporte. Aqui aprendemos em IA a fazer, algo super simples. So colocar a ideia e podemos pegar uma foto ou video.
 
 Tarefas:
 
