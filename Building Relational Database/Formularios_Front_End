@@ -1,0 +1,77 @@
+Teremos 5 formularios no front
+
+1. Formulário de Cadastro de Usuário Comum
+
+	1.	Nome (nome)
+	2.	E-mail (email)
+	3.	Senha (senha)
+  4. Telefone
+	5.	Tipo de Usuário (id_tipo_usuario) -- Aqui ele vai selecionar entre Parceiro, Comum, Investidor, Fornecedor
+	•	Dropdown preenchido com dados da tabela TIPOUSUARIO
+
+Campos Condicionais Baseados no Tipo de Usuário
+
+	Parceiro
+	•	Contato (contato)
+	•	Tipo de Parceria (tipo_parceria)
+
+	Fornecedor
+	•	Contato (contato)
+	•	Tipo de Serviço (tipo_servico)
+
+	Investidor
+	•	Contato (contato)
+	•	Quantia Contribuída (quantia_contribuida)
+
+2. Formulário de Login
+
+	•	E-mail (email)
+	•	Senha (senha)
+
+3. Formulário de Solicitação de Suporte
+
+	•	Descrição da Situação (descricao)
+	•	Localização de Origem (localizacao_origem) - Pode ser um campo de texto ou integração com API de localização para preenchimento automático
+	•	Tipo de Animal (id_animal) - Dropdown que é preenchido com dados da tabela ANIMAIS
+	•	Tipo de Resíduo (id_tipo_residuo) - Dropdown que é preenchido com dados da tabela TIPORESIDUO
+
+4. Formulário de Feedback
+
+  • Nome
+  • Email
+  • Telefone
+	•	Descrição (descricao)
+	•	Avaliação por Estrelas (id_stars) - Dropdown para selecionar de 1 a 5 estrelas, vinculado à tabela ESTRELAS
+
+5. Formulário de Suporte
+
+	1.	Nome
+	2.	E-mail
+	3.	Telefone
+	4.	Tipo de Suporte - Dropdown para escolher entre ‘Animal’ ou ‘Lixo’
+	5.	Descrição - Campo de texto para descrever a situação ou o problema
+  6. Endereco: Ele pode selecionar a opcao digitar manual ou definir usando com base na sua localizacao. Ai precisa abrir umas das opcoes abaixo.
+
+Campos para Endereço
+
+	1.	Localização Manual (opcional)
+	•	CEP (cep) - Aqui podemos implementar a API do CEP, assim que ele colocar o numero, ele faz a pesquisa de forma automatica.
+	•	Estado (estado)
+	•	Cidade (cidade)
+	•	Bairro (bairro)
+	•	Rua (rua)
+	•	Número (numero)
+	•	Complemento (complemento)
+
+	2.	Localização via API de Maps (opcional)
+	•	Campo de Pesquisa de Mapa - Um campo de busca que permite ao usuário digitar uma localização e selecionar a partir de sugestões automáticas.
+	•	Latitude (latitude)
+	•	Longitude (longitude)
+
+Campos Condicionais Baseados no Tipo de Suporte
+
+  Animal
+	•	Campos relacionados à tabela ANIMAIS (ex: nome do animal, espécie, descrição do animal)
+	
+  Lixo
+	•	Campos relacionados à tabela TIPORESIDUO (ex: tipo de resíduo, descrição do resíduo)
