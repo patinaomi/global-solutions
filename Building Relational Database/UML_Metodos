@@ -1,0 +1,80 @@
+
+### 1. Classe `Usuario`
+- **Métodos:**
+  - `criarUsuario(nome: String, email: String, telefone: String, senha: String, tipoUsuario: Number): Usuario`
+  - `consultarUsuario(idUsuario: Number): Usuario`
+  - `atualizarUsuario(idUsuario: Number, nome: String, email: String, telefone: String, senha: String, tipoUsuario: Number): Boolean`
+  - `deletarUsuario(idUsuario: Number): Boolean`
+
+### 2. Classe `TipoUsuario`
+- **Métodos:**
+  - `criarTipoUsuario(descricao: String): TipoUsuario`
+  - `consultarTipoUsuario(idTipoUsuario: Number): TipoUsuario`
+  - `atualizarTipoUsuario(idTipoUsuario: Number, descricao: String): Boolean`
+  - `deletarTipoUsuario(idTipoUsuario: Number): Boolean`
+
+### 3. Classe `Login`
+- **Métodos:**
+  - `criarLogin(idUsuario: Number, email: String, senha: String): Login`
+  - `consultarLogin(idLogin: Number): Login`
+  - `validarLogin(email: String, senha: String): Boolean`
+  - `atualizarLogin(idLogin: Number, email: String, senha: String): Boolean`
+  - `deletarLogin(idLogin: Number): Boolean`
+
+### 4. Classe `TipoLogin`
+- **Métodos:**
+  - `criarTipoLogin(descricao: String): TipoLogin`
+  - `consultarTipoLogin(idTipoLogin: Number): TipoLogin`
+  - `atualizarTipoLogin(idTipoLogin: Number, descricao: String): Boolean`
+  - `deletarTipoLogin(idTipoLogin: Number): Boolean`
+
+### 5. Classe `SolicitacaoSuporte`
+- **Métodos:**
+  - `criarSolicitacao(idUsuario: Number, descricao: String, telefone: String, localizacaoOrigem: String, dataSolicitacao: Timestamp, idAnimal: Number, idTipoResiduo: Number): SolicitacaoSuporte`
+  - `consultarSolicitacao(idSolicitacao: Number): SolicitacaoSuporte`
+  - `atualizarSolicitacao(idSolicitacao: Number, descricao: String, telefone: String, localizacaoOrigem: String, dataSolicitacao: Timestamp, idAnimal: Number, idTipoResiduo: Number): Boolean`
+  - `deletarSolicitacao(idSolicitacao: Number): Boolean`
+
+### 6. Classe `Animais`
+- **Métodos:**
+  - `criarAnimal(nomeAnimal: String, especieAnimal: String, descricaoAnimal: String): Animais`
+  - `consultarAnimal(idAnimal: Number): Animais`
+  - `atualizarAnimal(idAnimal: Number, nomeAnimal: String, especieAnimal: String, descricaoAnimal: String): Boolean`
+  - `deletarAnimal(idAnimal: Number): Boolean`
+
+### 7. Classe `TipoResiduo`
+- **Métodos:**
+  - `criarTipoResiduo(tipo: String, descricao: String): TipoResiduo`
+  - `consultarTipoResiduo(idTipoResiduo: Number): TipoResiduo`
+  - `atualizarTipoResiduo(idTipoResiduo: Number, tipo: String, descricao: String): Boolean`
+  - `deletarTipoResiduo(idTipoResiduo: Number): Boolean`
+
+### 8. Classe `Alertas`
+- **Métodos:**
+  - `criarAlerta(usuarioId: Number, tipoAlerta: String, mensagem: String, dataEnviado: Timestamp, idSolicitacaoSuporte: Number, lido: Number): Alertas`
+  - `consultarAlerta(idAlerta: Number): Alertas`
+  - `atualizarAlerta(idAlerta: Number, usuarioId: Number, tipoAlerta: String, mensagem: String, dataEnviado: Timestamp, idSolicitacaoSuporte: Number, lido: Number): Boolean`
+  - `deletarAlerta(idAlerta: Number): Boolean`
+
+### 9. Classe `Feedbacks`
+- **Métodos:**
+  - `criarFeedback(usuarioId: Number, nome: String, telefone: String
+, email: String, descricao: String, dataFeedback: Date, idStars: Number): Feedbacks`
+  - `consultarFeedback(idFeedback: Number): Feedbacks`
+  - `atualizarFeedback(idFeedback: Number, usuarioId: Number, nome: String, telefone: String, email: String, descricao: String, dataFeedback: Date, idStars: Number): Boolean`
+  - `deletarFeedback(idFeedback: Number): Boolean`
+
+### 10. Classe `Estrelas`
+- **Métodos:**
+  - `criarEstrela(quantidadeEstrelas: Number, definicao: String): Estrelas`
+  - `consultarEstrela(idStars: Number): Estrelas`
+  - `atualizarEstrela(idStars: Number, quantidadeEstrelas: Number, definicao: String): Boolean`
+  - `deletarEstrela(idStars: Number): Boolean`
+
+### 11. Classe `Localizacao`
+- **Métodos:**
+  - `criarLocalizacao(cep: String, estado: String, cidade: String, bairro: String, rua: String, complemento: String, dataCadastro: Date, longitude: Decimal, latitude: Decimal): Localizacao`
+  - `consultarLocalizacao(idLocalizacao: Number): Localizacao`
+  - `atualizarLocalizacao(idLocalizacao: Number, cep: String, estado: String, cidade: String, bairro: String, rua: String, complemento: String, dataCadastro: Date, longitude: Decimal, latitude: Decimal): Boolean`
+  - `deletarLocalizacao(idLocalizacao: Number): Boolean`
+
