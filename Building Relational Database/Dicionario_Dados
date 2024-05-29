@@ -53,8 +53,80 @@ Ele descreve cada tabela e seus campos, proporcionando uma visão clara da funç
 | especie_animal | VARCHAR2(255) | Espécie do animal                  |               |
 | descricao_animal| VARCHAR2(255)| Descrição detalhada do animal      |               |
 
+Vamos continuar a descrição do dicionário de dados para as tabelas restantes:
+
 ### 7. Tabela: `TIPORESIDUO`
-| Campo           | Tipo de Dados | Descrição                         | Restrições    |
-|-----------------|---------------|-----------------------------------|---------------|
+| Campo           | Tipo de Dados | Descrição                        | Restrições    |
+|-----------------|---------------|----------------------------------|---------------|
 | id_tipo_residuo | NUMBER        | Identificador único do tipo de resíduo | PRIMARY KEY   |
-| tipo
+| tipo            | VARCHAR2(255) | Tipo de resíduo                 | NOT NULL      |
+| descricao       | VARCHAR2(255) | Descrição do tipo de resíduo     | NOT NULL      |
+
+### 8. Tabela: `PARCEIROS`
+| Campo         | Tipo de Dados | Descrição                              | Restrições    |
+|---------------|---------------|----------------------------------------|---------------|
+| id_parceiro   | NUMBER        | Identificador único do parceiro        | PRIMARY KEY   |
+| nome          | VARCHAR2(255) | Nome do parceiro                       | NOT NULL      |
+| contato       | VARCHAR2(255) | Informação de contato do parceiro      |               |
+| tipo_parceria | VARCHAR2(255) | Descrição do tipo de parceria          | NOT NULL      |
+
+### 9. Tabela: `FORNECEDOR`
+| Campo         | Tipo de Dados | Descrição                            | Restrições    |
+|---------------|---------------|--------------------------------------|---------------|
+| id_fornecedor | NUMBER        | Identificador único do fornecedor    | PRIMARY KEY   |
+| nome          | VARCHAR2(255) | Nome do fornecedor                   | NOT NULL      |
+| contato       | VARCHAR2(255) | Informação de contato do fornecedor  |               |
+| tipo_servico  | VARCHAR2(255) | Tipo de serviço fornecido            | NOT NULL      |
+
+### 10. Tabela: `INVESTIDORES`
+| Campo              | Tipo de Dados | Descrição                                  | Restrições    |
+|--------------------|---------------|--------------------------------------------|---------------|
+| id_investidor      | NUMBER        | Identificador único do investidor          | PRIMARY KEY   |
+| nome               | VARCHAR2(255) | Nome do investidor                         | NOT NULL      |
+| contato            | VARCHAR2(255) | Informação de contato do investidor        |               |
+| quantia_contribuida| DECIMAL(10,2) | Quantia contribuída pelo investidor        | NOT NULL      |
+
+### 11. Tabela: `ALERTAS`
+| Campo                 | Tipo de Dados | Descrição                                    | Restrições               |
+|-----------------------|---------------|----------------------------------------------|--------------------------|
+| id_alerta             | NUMBER        | Identificador único do alerta                | PRIMARY KEY              |
+| usuario_id            | NUMBER        | ID do usuário relacionado ao alerta          | NOT NULL, FOREIGN KEY    |
+| tipo_alerta           | VARCHAR2(255) | Tipo de alerta                               | NOT NULL                 |
+| mensagem              | VARCHAR2(255) | Mensagem do alerta                           |                          |
+| data_enviado          | TIMESTAMP     | Data e hora de envio do alerta               | NOT NULL                 |
+| id_solicitacao_suporte | NUMBER        | ID da solicitação de suporte associada       | FOREIGN KEY              |
+| lido                  | NUMBER(1)     | Indicador se o alerta foi lido (0 não, 1 sim)| DEFAULT 0                |
+
+### 12. Tabela: `FEEDBACKS`
+| Campo          | Tipo de Dados | Descrição                              | Restrições               |
+|----------------|---------------|----------------------------------------|--------------------------|
+| id_feedback    | NUMBER        | Identificador único do feedback        | PRIMARY KEY              |
+| usuario_id     | NUMBER        | ID do usuário que forneceu o feedback  | NOT NULL, FOREIGN KEY    |
+| nome           | VARCHAR2(255) | Nome do usuário que forneceu o feedback| NOT NULL                 |
+| telefone       | VARCHAR2(255) | Telefone do usuário                    | NOT NULL                 |
+| email          | VARCHAR2(255) | Email do usuário                       | NOT NULL                 |
+| descricao      | VARCHAR2(255) | Descrição do feedback                  | NOT NULL                 |
+| data_feedback  | DATE          | Data quando o feedback foi fornecido   | NOT NULL                 |
+| id_stars       | NUMBER        | ID da avaliação por estrelas           | FOREIGN KEY              |
+
+### 13. Tabela: `ESTRELAS`
+| Campo              | Tipo de Dados | Descrição                         | Restrições    |
+|--------------------|---------------|-----------------------------------|---------------|
+| id_stars           | NUMBER        | Identificador único da estrela    | PRIMARY KEY
+
+
+### 14. Tabela: `LOCALIZACAO`
+| Campo         | Tipo de Dados   | Descrição                            | Restrições    |
+|---------------|-----------------|--------------------------------------|---------------|
+| id_localizacao| NUMBER          | Identificador único da localização   | PRIMARY KEY   |
+| cep           | VARCHAR2(20)    | Código postal                        |               |
+| estado        | VARCHAR2(100)   | Estado da localização                |               |
+| cidade        | VARCHAR2(100)   | Cidade da localização                |               |
+| bairro        | VARCHAR2(100)   | Bairro da localização                |               |
+| rua           | VARCHAR2(255)   | Rua da localização                   |               |
+| complemento   | VARCHAR2(255)   | Complemento do endereço              |               |
+| data_cadastro | DATE            | Data de cadastro da localização      |               |
+| longitude     | DECIMAL(9, 6)   | Longitude geográfica                 |               |
+| latitude      | DECIMAL(9, 6)   | Latitude geográfica                  |               |
+
+
