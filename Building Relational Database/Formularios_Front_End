@@ -5,7 +5,7 @@ Teremos 5 formularios no front
 	1.	Nome (nome)
 	2.	E-mail (email)
 	3.	Senha (senha)
-  4. Telefone
+  	4. Telefone
 	5.	Tipo de Usuário (id_tipo_usuario) -- Aqui ele vai selecionar entre Parceiro, Comum, Investidor, Fornecedor
 	•	Dropdown preenchido com dados da tabela TIPOUSUARIO
 
