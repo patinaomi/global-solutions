@@ -1,0 +1,137 @@
+-- Criação da tabela Usuarios
+CREATE TABLE USUARIO ( 
+  id_usuario NUMBER PRIMARY KEY, 
+  nome VARCHAR2(255) NOT NULL, 
+  email VARCHAR2(255) CONSTRAINT email_unique UNIQUE NOT NULL, 
+  senha VARCHAR2(255) NOT NULL,
+  id_tipo_usuario NUMBER NOT NULL,
+  CONSTRAINT fk_tipo_usuario FOREIGN KEY (id_tipo_usuario) REFERENCES TIPOUSUARIO(id_tipo_usuario)
+);
+
+-- Criação da tabela TipoUsuario
+CREATE TABLE TIPOUSUARIO (
+  id_tipo_usuario NUMBER PRIMARY KEY,
+  descricao VARCHAR2(255) NOT NULL
+);
+
+-- Criação da tabela Login
+CREATE TABLE LOGIN ( 
+  id_login NUMBER PRIMARY KEY, 
+  id_usuario NUMBER NOT NULL, --Chave estrangeira aqui
+  email VARCHAR2(255) NOT NULL,  -- Precisa ter a confirmação do back
+  senha VARCHAR2(255), -- Precisa ter a confirmação do back
+  data_login DATE NOT NULL, 
+  id_tipo_login NUMBER NOT NULL, -- Chave estrangeira aqui
+  CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario),
+  CONSTRAINT fk_tipo_login FOREIGN KEY (id_tipo_login) REFERENCES TIPOLOGIN(id_tipo_login)
+);
+
+-- Criação da tabela TipoLogin
+CREATE TABLE TIPOLOGIN (
+  id_tipo_login NUMBER PRIMARY KEY, 
+  descricao VARCHAR2(255) NOT NULL
+);
+
+-- Criação da tabela SolicitacaoSuporte
+CREATE TABLE SOLICITACAOSUPORTE (
+  id_solicitacao NUMBER PRIMARY KEY,
+  id_usuario NUMBER NOT NULL,
+  descricao VARCHAR2(255),
+  localizacao_origem VARCHAR2(255) NOT NULL,
+  data_solicitacao TIMESTAMP NOT NULL,
+  id_animal NUMBER,
+  id_tipo_residuo NUMBER,
+  CONSTRAINT fk_usuario_suporte FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario),
+  CONSTRAINT fk_animal FOREIGN KEY (id_animal) REFERENCES ANIMAIS(id_animal),
+  CONSTRAINT fk_tipo_residuo FOREIGN KEY (id_tipo_residuo) REFERENCES TIPORESIDUO(id_tipo_residuo)
+);
+
+-- Criação da tabela Tipos Residuo
+CREATE TABLE TIPORESIDUO (
+  id_tipo_residuo NUMBER PRIMARY KEY,
+  tipo VARCHAR2(255) NOT NULL,
+  descricao VARCHAR2(255) NOT NULL
+);
+
+-- Criação da tabela Animais
+CREATE TABLE ANIMAIS (
+  id_animal NUMBER PRIMARY KEY,
+  nome_animal VARCHAR2(255),
+  especie_animal VARCHAR2(255),
+  descricao_animal VARCHAR2(255)
+);
+
+-- Criação da tabela Categorias
+CREATE TABLE CATEGORIAS (
+  id_categoria NUMBER PRIMARY KEY,
+  nome VARCHAR2(255) NOT NULL,
+  descricao VARCHAR2(255) NOT NULL
+);
+
+-- Criação da tabela Parceiros
+CREATE TABLE PARCEIROS (
+  id_parceiro NUMBER PRIMARY KEY,
+  nome VARCHAR2(255) NOT NULL,
+  contato VARCHAR2(255),
+  tipo_parceria VARCHAR2(255) NOT NULL
+);
+
+-- Criação da tabela Fornecedores
+CREATE TABLE FORNECEDOR (
+  id_fornecedor NUMBER PRIMARY KEY,
+  nome VARCHAR2(255) NOT NULL,
+  contato VARCHAR2(255),
+  tipo_servico VARCHAR2(255) NOT NULL
+);
+
+-- Criação da tabela Investidores
+CREATE TABLE INVESTIDORES (
+  id_investidor NUMBER PRIMARY KEY,
+  nome VARCHAR2(255) NOT NULL,
+  contato VARCHAR2(255),
+  quantia_contribuida DECIMAL(10, 2) NOT NULL
+);
+
+-- Criação da tabela Alertas
+CREATE TABLE ALERTAS (
+  id_alerta NUMBER PRIMARY KEY,
+  usuario_id NUMBER NOT NULL,
+  tipo_alerta VARCHAR2(255) NOT NULL,
+  mensagem VARCHAR2(255),
+  data_enviado TIMESTAMP NOT NULL,
+  id_solicitacao_suporte NUMBER,
+  lido NUMBER(1) DEFAULT 0,
+  CONSTRAINT fk_usuario_alerta FOREIGN KEY (usuario_id) REFERENCES USUARIO(id_usuario),
+  CONSTRAINT fk_solicitacao_suporte FOREIGN KEY (id_solicitacao_suporte) REFERENCES SOLICITACAOSUPORTE(id_solicitacao)
+);
+
+-- Criação da tabela Feedbacks
+CREATE TABLE FEEDBACKS (
+  id_feedback NUMBER PRIMARY KEY,
+  usuario_id NUMBER NOT NULL,
+  descricao VARCHAR2(255) NOT NULL,
+  data_feedback DATE NOT NULL,
+  id_stars NUMBER,
+  CONSTRAINT fk_usuario_feedback FOREIGN KEY (usuario_id) REFERENCES USUARIO(id_usuario)
+);
+
+-- Tabela suporte das estrelas
+CREATE TABLE ESTRELAS (
+  id_stars NUMBER PRIMARY KEY,
+  quantidade_estrelas NUMBER(1) NOT NULL,
+  definicao VARCHAR2(255) NOT NULL
+);
+
+-- Tabela para armazenar localizações via CEP
+CREATE TABLE LOCALIZACAO (
+  id_localizacao NUMBER PRIMARY KEY,
+  cep VARCHAR2(20),
+  estado VARCHAR2(100),
+  cidade VARCHAR2(100),
+  bairro VARCHAR2(100),
+  rua VARCHAR2(255),
+  complemento VARCHAR2(255),
+  data_cadastro DATE,
+  longitude DECIMAL(9, 6),
+  latitude DECIMAL(9, 6)
+);
