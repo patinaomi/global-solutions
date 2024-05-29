@@ -1,0 +1,60 @@
+O dicionário de dados é uma ferramenta essencial para entender a estrutura de um banco de dados. 
+Ele descreve cada tabela e seus campos, proporcionando uma visão clara da função e dos tipos de dados de cada coluna. 
+
+### 1. Tabela: `USUARIO`
+| Campo           | Tipo de Dados | Descrição                           | Restrições                |
+|-----------------|---------------|-------------------------------------|---------------------------|
+| id_usuario      | NUMBER        | Identificador único do usuário      | PRIMARY KEY               |
+| nome            | VARCHAR2(255) | Nome completo do usuário            | NOT NULL                  |
+| email           | VARCHAR2(255) | Endereço de email do usuário        | UNIQUE, NOT NULL          |
+| telefone        | VARCHAR2(255) | Número de telefone do usuário       | NOT NULL                  |
+| senha           | VARCHAR2(255) | Senha para acesso do usuário        | NOT NULL                  |
+| id_tipo_usuario | NUMBER        | Tipo do usuário (referência)        | NOT NULL, FOREIGN KEY     |
+
+### 2. Tabela: `TIPOUSUARIO`
+| Campo           | Tipo de Dados | Descrição                          | Restrições    |
+|-----------------|---------------|------------------------------------|---------------|
+| id_tipo_usuario | NUMBER        | Identificador único do tipo        | PRIMARY KEY   |
+| descricao       | VARCHAR2(255) | Descrição do tipo de usuário       | NOT NULL      |
+
+### 3. Tabela: `LOGIN`
+| Campo          | Tipo de Dados | Descrição                            | Restrições               |
+|----------------|---------------|--------------------------------------|--------------------------|
+| id_login       | NUMBER        | Identificador único do login         | PRIMARY KEY              |
+| id_usuario     | NUMBER        | ID do usuário                        | NOT NULL, FOREIGN KEY    |
+| email          | VARCHAR2(255) | Email usado para login               | NOT NULL                 |
+| senha          | VARCHAR2(255) | Senha usada para login               | NOT NULL                 |
+| data_login     | DATE          | Data e hora do login                 | NOT NULL                 |
+| id_tipo_login  | NUMBER        | Tipo de login (referência)           | NOT NULL, FOREIGN KEY    |
+
+### 4. Tabela: `TIPOLOGIN`
+| Campo          | Tipo de Dados | Descrição                          | Restrições    |
+|----------------|---------------|------------------------------------|---------------|
+| id_tipo_login  | NUMBER        | Identificador único do tipo de login| PRIMARY KEY   |
+| descricao      | VARCHAR2(255) | Descrição do tipo de login         | NOT NULL      |
+
+### 5. Tabela: `SOLICITACAOSUPORTE`
+| Campo              | Tipo de Dados | Descrição                                       | Restrições               |
+|--------------------|---------------|-------------------------------------------------|--------------------------|
+| id_solicitacao     | NUMBER        | Identificador único da solicitação de suporte   | PRIMARY KEY              |
+| id_usuario         | NUMBER        | ID do usuário que fez a solicitação             | NOT NULL, FOREIGN KEY    |
+| descricao          | VARCHAR2(255) | Descrição do suporte solicitado                 | NOT NULL                 |
+| telefone           | VARCHAR2(255) | Telefone de contato                             | NOT NULL                 |
+| localizacao_origem | VARCHAR2(255) | Origem da localização do suporte                | NOT NULL                 |
+| data_solicitacao   | TIMESTAMP     | Data e hora da solicitação                      | NOT NULL                 |
+| id_animal          | NUMBER        | ID do animal (se aplicável)                     | FOREIGN KEY              |
+| id_tipo_residuo    | NUMBER        | ID do tipo de resíduo (se aplicável)            | FOREIGN KEY              |
+
+### 6. Tabela: `ANIMAIS`
+| Campo          | Tipo de Dados | Descrição                          | Restrições    |
+|----------------|---------------|------------------------------------|---------------|
+| id_animal      | NUMBER        | Identificador único do animal      | PRIMARY KEY   |
+| nome_animal    | VARCHAR2(255) | Nome do animal                     |               |
+| especie_animal | VARCHAR2(255) | Espécie do animal                  |               |
+| descricao_animal| VARCHAR2(255)| Descrição detalhada do animal      |               |
+
+### 7. Tabela: `TIPORESIDUO`
+| Campo           | Tipo de Dados | Descrição                         | Restrições    |
+|-----------------|---------------|-----------------------------------|---------------|
+| id_tipo_residuo | NUMBER        | Identificador único do tipo de resíduo | PRIMARY KEY   |
+| tipo
