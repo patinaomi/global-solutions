@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="logico" id="7328905E-2032-AD1F-61E3-CC2CB95CB1D9" version="3.5">
+<createdBy>logonrmlocal</createdBy>
+<createdTime>2024-05-29 23:38:45 UTC</createdTime>
+<ownerDesignName>logico</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>7328905E-2032-AD1F-61E3-CC2CB95CB1D9</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="EDEAC98E-0280-9C39-6024-6C9FEEE38448">
+<designStoragePath>C:\projeto_global_solution</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>
