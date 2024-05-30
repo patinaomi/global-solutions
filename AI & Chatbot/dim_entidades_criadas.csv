@@ -1,38 +1,38 @@
 Entidade,Código
 Ukraine,UKR
-Bhutan,
+Bhutan,BHU
 Australia,AUS
 North Korea,PRK
-Federated States of Micronesia,
+Federated States of Micronesia,FED
 Ghana,GHA
 Belgium,BEL
 Venezuela,VEN
-Timor-Leste,
+Timor-Leste,TIM
 Nicaragua,NIC
 Netherlands,NLD
 Romania,ROU
 Sao Tome and Principe,STP
-Ethiopia,
-Uganda,
-Oceania,
+Ethiopia,ETH
+Uganda,UGA
+Oceania,OCE
 Sierra Leone,SLE
-Malawi,
-Uzbekistan,
+Malawi,MAL
+Uzbekistan,UZB
 Puerto Rico,PRI
 Mexico,MEX
 Zimbabwe,ZWE
 Colombia,COL
 Thailand,THA
-Belarus,
-Sub-Saharan Africa,
+Belarus,BEL1
+Sub-Saharan Africa,SUB
 Oman,OMN
 Japan,JPN
 Namibia,NAM
 Marshall Islands,MHL
-Czech Republic,
+Czech Republic,CZE
 Kazakhstan,KAZ
 Fiji,FJI
-Macau,
+Macau,MAC
 Bangladesh,BGD
 Peru,PER
 Italy,ITA
@@ -40,17 +40,17 @@ Kenya,KEN
 Slovenia,SVN
 Trinidad and Tobago,TTO
 Benin,BEN
-Liechtenstein,
+Liechtenstein,LIE
 Pakistan,PAK
-Chad,
+Chad,CHA
 Monaco,MCO
 Mozambique,MOZ
 Denmark,DNK
 Grenada,GRD
-Azerbaijan,
+Azerbaijan,AZE
 Montenegro,MNE
 Syria,SYR
-Kyrgyzstan,
+Kyrgyzstan,KYR
 Qatar,QAT
 Somalia,SOM
 Yemen,YEM
@@ -61,28 +61,28 @@ United States,USA
 Greece,GRC
 Bahrain,BHR
 Sri Lanka,LKA
-Mali,
+Mali,MAL1
 Indonesia,IDN
 Senegal,SEN
 Taiwan,TWN
 Gambia,GMB
 Vietnam,VNM
 Tonga,TON
-Afghanistan,
+Afghanistan,AFG
 Martinique,MTQ
-Bolivia,
-United States of America,
-South Sudan,
-Africa,
+Bolivia,BOL
+United States of America,UNI
+South Sudan,SOU
+Africa,AFR
 Burkina Faso,BFA
 Guyana,GUY
 Panama,PAN
-Hungary,
+Hungary,HUN
 Canada,CAN
 Egypt,EGY
 Palestine,PSE
 Seychelles,SYC
-Paraguay,
+Paraguay,PAR
 Israel,ISR
 Cyprus,CYP
 Lesotho,LSO
@@ -91,68 +91,68 @@ Mauritius,MUS
 United Arab Emirates,ARE
 Jamaica,JAM
 Honduras,HND
-Moldova,
+Moldova,MOL
 Kuwait,KWT
 Iran,IRN
 Morocco,MAR
-Niger,
+Niger,NIG
 Saudi Arabia,SAU
-Botswana,
-Switzerland,
+Botswana,BOT
+Switzerland,SWI
 Lebanon,LBN
 Albania,ALB
 Cambodia,KHM
 Malaysia,MYS
 Philippines,PHL
-Saint Martin,
+Saint Martin,SAI
 Costa Rica,CRI
 Ireland,IRL
 Reunion,REU
 Bahamas,BHS
 Myanmar,MMR
-Central African Republic,
+Central African Republic,CEN
 Guadeloupe,GLP
 Estonia,EST
 Singapore,SGP
 Western Sahara,ESH
 Antigua and Barbuda,ATG
-Laos,
+Laos,LAO
 Dominica,DMA
 Liberia,LBR
 Equatorial Guinea,GNQ
 France,FRA
 Uruguay,URY
 Jordan,JOR
-Sint Maarten,
+Sint Maarten,SIN
 Malta,MLT
-Asia (excl. China e India),
-South America,
-The Bahamas,
-The Gambia,
-Eswatini,
+Asia (excl. China e India),ASI
+South America,SOU1
+The Bahamas,THE
+The Gambia,THE1
+Eswatini,ESW
 Iceland,ISL
 Tanzania,TZA
 India,IND
 Finland,FIN
-Nepal,
+Nepal,NEP
 Comoros,COM
 East Timor,TLS
 New Zealand,NZL
 Sweden,SWE
-Middle East & North Africa,
+Middle East & North Africa,MID
 Guinea,GIN
 French Guiana,GUF
-San Marino,
+San Marino,SAN
 Chile,CHL
 Germany,DEU
 Belize,BLZ
-Austria,
+Austria,AUS1
 Sudan,SDN
 Georgia,GEO
-EU-27,
-Armenia,
+EU-27,EU-
+Armenia,ARM
 Nigeria,NGA
-Turkmenistan,
+Turkmenistan,TUR1
 Angola,AGO
 Norway,NOR
 Cote d'Ivoire,CIV
@@ -161,64 +161,64 @@ Portugal,PRT
 South Africa,ZAF
 Tunisia,TUN
 Turkey,TUR
-Republic of the Congo,
-Americas (excl. USA),
-Burundi,
+Republic of the Congo,REP
+Americas (excl. USA),AME
+Burundi,BUR
 Saint Kitts and Nevis,KNA
 Iraq,IRQ
 Lithuania,LTU
 Barbados,BRB
 Guinea-Bissau,GNB
-Mongolia,
-Rwanda,
+Mongolia,MON
+Rwanda,RWA
 Samoa,WSM
 Hong Kong,HKG
 Brunei,BRN
-Luxembourg,
-Serbia,
+Luxembourg,LUX
+Serbia,SER
 Solomon Islands,SLB
 Guatemala,GTM
-Tajikistan,
+Tajikistan,TAJ
 Cape Verde,CPV
 Cameroon,CMR
 Argentina,ARG
-North America,
+North America,NOR1
 Bulgaria,BGR
-Cuba,
+Cuba,CUB
 Togo,TGO
 Madagascar,MDG
 Slovakia,SVK
 Poland,POL
 Croatia,HRV
-Micronesia,
+Micronesia,MIC
 Maldives,MDV
 Mundo,OWID_WRL
 South Korea,KOR
 Latvia,LVA
 Suriname,SUR
 Palau,PLW
-Europe,
+Europe,EUR
 Bosnia and Herzegovina,BIH
 Saint Vincent and the Grenadines,VCT
 World,OWID_WRL
 Kiribati,KIR
 Haiti,HTI
-Andorra,
+Andorra,AND
 Ecuador,ECU
 Spain,ESP
 Russia,RUS
 Saint Lucia,LCA
-Vanuatu,
+Vanuatu,VAN
 Libya,LBY
 Eritrea,ERI
 Algeria,DZA
 Congo,COG
-People's Republic of China,
+People's Republic of China,PEO
 Democratic Republic of Congo,COD
 China,CHN
 United Kingdom,GBR
-North Macedonia,
-Zambia,
+North Macedonia,NOR2
+Zambia,ZAM
 Papua New Guinea,PNG
-Asia,
+Asia,ASI1
 Brazil,BRA
