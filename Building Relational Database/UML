@@ -1,106 +1,94 @@
+# Modelo UML do Banco de Dados
 
-### Diagrama UML de Classes para o Banco de Dados
+### Entidades e Relacionamentos
 
-1. **Classe `Usuario`**
-   - **Atributos:**
-     - `id_usuario: Number`
-     - `nome: String`
-     - `email: String`
-     - `telefone: String`
-     - `senha: String`
+Entidade: TIPOUSUARIO
+id_tipo_usuario: INTEGER, Chave primária
+descricao: VARCHAR2(255)
 
-   - **Relacionamentos:**
-     - Associado a `TipoUsuario` através de `id_tipo_usuario`.
-     - Associado a `Login` através de `id_usuario`.
-     - Associado a `SolicitacaoSuporte` através de `id_usuario`.
-     - Associado a `Alertas` através de `usuario_id`.
-     - Associado a `Feedbacks` através de `usuario_id`.
+Entidade: USUARIO
+id_usuario: INTEGER, Chave primária
+nome: VARCHAR2(255)
+sobrenome: VARCHAR2(255)
+email: VARCHAR2(255), Único
+senha: VARCHAR2(255)
+telefone: VARCHAR2(255)
+id_tipo_usuario: INTEGER, Chave estrangeira para TIPOUSUARIO(id_tipo_usuario)
 
-2. **Classe `TipoUsuario`**
+Entidade: TIPOLOGIN
+id_tipo_login: INTEGER, Chave primária
+descricao: VARCHAR2(255)
 
-   - **Atributos:**
-     - `id_tipo_usuario: Number`
-     - `descricao: String`
+Entidade: LOGIN
+id_login: INTEGER, Chave primária
+id_usuario: INTEGER, Chave estrangeira para USUARIO(id_usuario)
+email: VARCHAR2(255)
+senha: VARCHAR2(255)
+data_login: DATE
+id_tipo_login: INTEGER, Chave estrangeira para TIPOLOGIN(id_tipo_login)
 
-3. **Classe `Login`**
+Entidade: CONDICAOANIMAL
+id_condicao: INTEGER, Chave primária
+condicao: VARCHAR2(255)
 
-   - **Atributos:**
-     - `id_login: Number`
-     - `id_usuario: Number`
-     - `email: String`
-     - `senha: String`
-     - `data_login: Date`
+Entidade: ANIMAL
+id_animal: INTEGER, Chave primária
+nome_animal: VARCHAR2(255)
+especie_animal: VARCHAR2(255)
+descricao_animal: VARCHAR2(255)
+id_condicao: INTEGER, Chave estrangeira para CONDICAOANIMAL(id_condicao)
 
-   - **Relacionamentos:**
-     - Associado a `Usuario` através de `id_usuario`.
+Entidade: TIPORESIDUO
+id_tipo_residuo: INTEGER, Chave primária
+tipo: VARCHAR2(255)
+descricao: VARCHAR2(255)
 
-4. **Classe `SolicitacaoSuporte`**
+Entidade: OCORRENCIA
+id_solicitacao: INTEGER, Chave primária
+id_usuario: INTEGER, Chave estrangeira para USUARIO(id_usuario)
+descricao: VARCHAR2(255)
+telefone: VARCHAR2(255)
+imagem: VARCHAR2(255)
+longitude: VARCHAR2(255)
+latitude: VARCHAR2(255)
+data_solicitacao: TIMESTAMP
+id_animal: INTEGER, Chave estrangeira para ANIMAL(id_animal)
+id_tipo_residuo: INTEGER, Chave estrangeira para TIPORESIDUO(id_tipo_residuo)
+condicao: VARCHAR2(255)
 
-   - **Atributos:**
-     - `id_solicitacao: Number`
-     - `id_usuario: Number`
-     - `descricao: String`
-     - `telefone: String`
-     - `localizacao_origem: String`
-     - `data_solicitacao: Timestamp`
+Entidade: INVESTIDOR
+id_investidor: INTEGER, Chave primária
+nome: VARCHAR2(255)
+email: VARCHAR2(255)
+telefone: VARCHAR2(255)
+tipo_investidor: VARCHAR2(255)
+nome_empresa: VARCHAR2(255)
+quantia_contribuida: DECIMAL(10,2)
+data_investimento: TIMESTAMP
+mensagem: VARCHAR2(255)
 
-   - **Relacionamentos:**
-     - Associado a `Usuario` através de `id_usuario`.
-     - Associado a `Animais` através de `id_animal`.
-     - Associado a `TipoResiduo` através de `id_tipo_residuo`.
+Entidade: FORMS_FEEDBACK
+id_feedback: INTEGER, Chave primária
+usuario_id: INTEGER, Chave estrangeira para USUARIO(id_usuario)
+nome: VARCHAR2(255)
+telefone: VARCHAR2(255)
+email: VARCHAR2(255)
+descricao: VARCHAR2(255)
+data_feedback: DATE
 
-5. **Classe `Animais`**
+Entidade: NEWSLETTER
+id_news: INTEGER, Chave primária
+email: VARCHAR2(255)
+data_envio: DATE
+status: VARCHAR2(255)
 
-   - **Atributos:**
-     - `id_animal: Number`
-     - `nome_animal: String`
-     - `especie_animal: String`
-     - `descricao_animal: String`
+### Relacionamentos
 
-6. **Classe `TipoResiduo`**
-
-   - **Atributos:**
-     - `id_tipo_residuo: Number`
-     - `tipo: String`
-     - `descricao: String`
-
-7. **Classe `Alertas`**
-
-   - **Atributos:**
-     - `id_alerta: Number`
-     - `usuario_id: Number`
-     - `tipo_alerta: String`
-     - `mensagem: String`
-     - `data_enviado: Timestamp`
-
-   - **Relacionamentos:**
-     - Associado a `Usuario` através de `usuario_id`.
-
-8. **Classe `Feedbacks`**
-
-   - **Atributos:**
-     - `id_feedback: Number`
-     - `usuario_id: Number`
-     - `nome: String`
-     - `telefone: String`
-     - `email: String`
-     - `descricao: String`
-     - `data_feedback: Date`
-
-   - **Relacionamentos:**
-     - Associado a `Usuario` através de `usuario_id`.
-
-9. **Classe `Localizacao`**
-
-   - **Atributos:**
-     - `id_localizacao: Number`
-     - `cep: String`
-     - `estado: String`
-     - `cidade: String`
-     - `bairro: String`
-     - `rua: String`
-     - `complemento: String`
-     - `data_cadastro: Date`
-     - `longitude: Decimal`
-     - `latitude: Decimal`
-
+USUARIO possui um TIPOUSUARIO (USUARIO.id_tipo_usuario -> TIPOUSUARIO.id_tipo_usuario)
+LOGIN possui um USUARIO (LOGIN.id_usuario -> USUARIO.id_usuario)
+LOGIN possui um TIPOLOGIN (LOGIN.id_tipo_login -> TIPOLOGIN.id_tipo_login)
+ANIMAL possui uma CONDICAOANIMAL (ANIMAL.id_condicao -> CONDICAOANIMAL.id_condicao)
+OCORRENCIA possui um USUARIO (OCORRENCIA.id_usuario -> USUARIO.id_usuario)
+OCORRENCIA possui um ANIMAL (OCORRENCIA.id_animal -> ANIMAL.id_animal)
+OCORRENCIA possui um TIPORESIDUO (OCORRENCIA.id_tipo_residuo -> TIPORESIDUO.id_tipo_residuo)
+FORMS_FEEDBACK possui um USUARIO (FORMS_FEEDBACK.usuario_id -> USUARIO.id_usuario)
