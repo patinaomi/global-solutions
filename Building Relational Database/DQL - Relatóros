@@ -5,21 +5,21 @@ SELECT *
 FROM USUARIO
 ORDER BY nome ASC;
 
-2. Relatório usando BETWEEN e LIKE
+-- 2. Relatório usando BETWEEN e LIKE
 
 -- Listar ocorrências entre duas datas e que contenham a palavra 'Animal' na descrição
-SELECT * 
+SELECT *
 FROM OCORRENCIA
-WHERE data_solicitacao BETWEEN TO_DATE('2024-01-01', 'YYYY-MM-DD') AND TO_DATE('2024-12-31', 'YYYY-MM-DD')
-AND descricao LIKE '%Animal%';
+WHERE data_solicitacao BETWEEN TO_DATE('2023-01-01', 'YYYY-MM-DD') AND TO_DATE('2024-12-31', 'YYYY-MM-DD')
+AND descricao LIKE '%Em Perigo%';
 
-3. Relatório usando função de caractere
+-- 3. Relatório usando função de caractere
 
 -- Listar os emails dos usuários em letras maiúsculas
 SELECT UPPER(email) AS email_maiusculo
 FROM USUARIO;
 
-4. Relatório usando função de data
+-- 4. Relatório usando função de data
 
 -- Listar os usuários e a diferença em dias desde o último login
 SELECT u.nome, u.sobrenome, l.data_login, 
@@ -29,16 +29,17 @@ JOIN LOGIN l ON u.id_usuario = l.id_usuario
 ORDER BY dias_desde_ultimo_login DESC;
 
 
-5. Relatório usando GROUP BY
+-- 5. Relatório usando GROUP BY
+select * from ocorrencia;
 
 -- Contagem de ocorrências por condição
-SELECT condicao, COUNT(*) AS quantidade
+SELECT descricao, COUNT(*) AS quantidade
 FROM OCORRENCIA
-GROUP BY condicao
+GROUP BY descricao
 ORDER BY quantidade DESC;
 
 
-6. Relatório usando junção de equivalência
+-- 6. Relatório usando junção de equivalência
 
 -- Listar todas as ocorrências com informações do usuário
 SELECT o.id_solicitacao, o.descricao, u.nome, u.sobrenome, u.email
@@ -46,13 +47,12 @@ FROM OCORRENCIA o
 JOIN USUARIO u ON o.id_usuario = u.id_usuario;
 
 
-7. Relatório usando junção de diferença
+-- 7. Relatório usando junção de diferença
+select * from usuario;
 
 -- Listar todos os usuários que não têm ocorrências registradas
 SELECT u.id_usuario, u.nome, u.sobrenome, u.email
 FROM USUARIO u
 LEFT JOIN OCORRENCIA o ON u.id_usuario = o.id_usuario
 WHERE o.id_usuario IS NULL;
-
-
 
