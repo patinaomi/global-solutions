@@ -5,6 +5,7 @@
 -- Patricia Naomi Yamagishi RM552981
 -- Sabrina da Motta Café RM553568
 
+
 -- Deletar tabelas caso já existam
 DROP TABLE FORMS_FEEDBACK CASCADE CONSTRAINTS;
 DROP TABLE INVESTIDOR CASCADE CONSTRAINTS;
@@ -16,16 +17,8 @@ DROP TABLE NEWSLETTER CASCADE CONSTRAINTS;
 DROP TABLE USUARIO CASCADE CONSTRAINTS;
 DROP TABLE TIPOLOGIN CASCADE CONSTRAINTS;
 DROP TABLE TIPORESIDUO CASCADE CONSTRAINTS;
-DROP TABLE TIPOUSUARIO CASCADE CONSTRAINTS;
 
 -- Criação das tabelas
-
--- TipoUsuario
-CREATE TABLE TIPOUSUARIO (
-    id_tipo_usuario INTEGER GENERATED ALWAYS AS IDENTITY(START WITH 1 INCREMENT BY 1) NOT NULL,
-    descricao VARCHAR2(255) NOT NULL,
-    CONSTRAINT tipousuario_pk PRIMARY KEY(id_tipo_usuario)
-);
 
 -- Usuario
 CREATE TABLE USUARIO (
@@ -35,10 +28,8 @@ CREATE TABLE USUARIO (
     email VARCHAR2(255) CONSTRAINT email_unique UNIQUE NOT NULL,
     senha VARCHAR2(255) NOT NULL,
     telefone VARCHAR2(255) NOT NULL,
-    id_tipo_usuario INTEGER NOT NULL,
     CONSTRAINT usuario_pk PRIMARY KEY(id_usuario)
 );
-ALTER TABLE USUARIO ADD CONSTRAINT fk_tipo_usuario FOREIGN KEY (id_tipo_usuario) REFERENCES TIPOUSUARIO(id_tipo_usuario);
 
 -- TipoLogin
 CREATE TABLE TIPOLOGIN (
@@ -90,18 +81,25 @@ CREATE TABLE TIPORESIDUO (
 CREATE TABLE OCORRENCIA (
     id_solicitacao INTEGER GENERATED ALWAYS AS IDENTITY(START WITH 1 INCREMENT BY 1) NOT NULL,
     id_usuario INTEGER NOT NULL,
-    descricao VARCHAR2(255),
-    telefone VARCHAR2(255) NOT NULL,
+    nome VARCHAR2(255),
+    telefone VARCHAR2(50) NOT NULL,
+    email VARCHAR2(50) NOT NULL,
     imagem VARCHAR2(255),
     longitude VARCHAR2(255),
     latitude VARCHAR2(255),
     data_solicitacao TIMESTAMP NOT NULL,
     id_animal INTEGER,
     id_tipo_residuo INTEGER,
-    condicao VARCHAR2(255) NOT NULL,
+    descricao VARCHAR2(255),
+    pais VARCHAR2(255),
+    estado VARCHAR2(255),
+    cidade VARCHAR2(255),
+    cep VARCHAR2(255),
+    bairro VARCHAR2(255),
+    rua VARCHAR2(255),
     CONSTRAINT ocorrencia_pk PRIMARY KEY(id_solicitacao)
 );
-ALTER TABLE OCORRENCIA ADD CONSTRAINT fk_usuario_ocorrencia FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario);
+
 ALTER TABLE OCORRENCIA ADD CONSTRAINT fk_animal FOREIGN KEY (id_animal) REFERENCES ANIMAL(id_animal);
 ALTER TABLE OCORRENCIA ADD CONSTRAINT fk_tipo_residuo FOREIGN KEY (id_tipo_residuo) REFERENCES TIPORESIDUO(id_tipo_residuo);
 
@@ -111,26 +109,24 @@ CREATE TABLE INVESTIDOR (
     nome VARCHAR2(255) NOT NULL,
     email VARCHAR2(255) NOT NULL,
     telefone VARCHAR2(255) NOT NULL,
-    tipo_investidor VARCHAR2(255) NOT NULL,
     nome_empresa VARCHAR2(255) NOT NULL,
     quantia_contribuida DECIMAL(10, 2) NOT NULL,
     data_investimento TIMESTAMP NOT NULL,
-    mensagem VARCHAR2(255) NOT NULL,
+    descricao VARCHAR2(255) NOT NULL,
     CONSTRAINT investidor_pk PRIMARY KEY(id_investidor)
 );
 
 -- Forms_Feedback
 CREATE TABLE FORMS_FEEDBACK (
     id_feedback INTEGER GENERATED ALWAYS AS IDENTITY(START WITH 1 INCREMENT BY 1) NOT NULL,
-    usuario_id INTEGER NOT NULL,
     nome VARCHAR2(255) NOT NULL,
     telefone VARCHAR2(255) NOT NULL,
     email VARCHAR2(255) NOT NULL,
+    nota NUMBER(1) NOT NULL,
     descricao VARCHAR2(255) NOT NULL,
     data_feedback DATE NOT NULL,
     CONSTRAINT forms_feedback_pk PRIMARY KEY(id_feedback)
 );
-ALTER TABLE FORMS_FEEDBACK ADD CONSTRAINT fk_usuario_feedback FOREIGN KEY (usuario_id) REFERENCES USUARIO(id_usuario);
 
 -- Newsletter
 CREATE TABLE NEWSLETTER (
