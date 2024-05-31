@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="modelo_logico_oficial" id="FF97A3FC-E9CA-9B74-B2B0-4BA27789BEA6" version="3.5">
+<createdBy>claudiobispo</createdBy>
+<createdTime>2024-05-31 19:55:30 UTC</createdTime>
+<ownerDesignName>modelo_logico_oficial</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>FF97A3FC-E9CA-9B74-B2B0-4BA27789BEA6</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="88FFD61C-B5E9-21D6-AFFC-648304AC1024">
+<designStoragePath>/query_global_solution_2024_oficial</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>
