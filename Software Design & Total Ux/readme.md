@@ -1,3 +1,6 @@
+Link do Canva que será convertido em pdf: https://www.canva.com/design/DAGGvVqPa0w/B6FJLub8L-6S4SnH60KJdQ/edit?utm_content=DAGGvVqPa0w&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton 
+
+
 Pati, aqui podemos criar um pagina como se fosse uma linha do tempo e com a agua fazendo o trajeto e uma animal que cada ponto que 
 retrate os nossos objetivos, cmo sera uns 8, acho que fica legal.
 Nao precisa escrever todo o conteudo, so o que chama atencao e em baixo de cada ideia, colocar um ˜saiba mais˜. 
