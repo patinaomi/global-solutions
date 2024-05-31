@@ -1,132 +1,82 @@
-O dicionário de dados é uma ferramenta essencial para entender a estrutura de um banco de dados. 
-Ele descreve cada tabela e seus campos, proporcionando uma visão clara da função e dos tipos de dados de cada coluna. 
+O dicionário de dados é uma ferramenta essencial para entender a estrutura de um banco de dados.  Ele descreve cada tabela e seus campos, 
+proporcionando uma visão clara da função e dos tipos de dados de cada coluna. 
 
-### 1. Tabela: `USUARIO`
-| Campo           | Tipo de Dados | Descrição                           | Restrições                |
-|-----------------|---------------|-------------------------------------|---------------------------|
-| id_usuario      | NUMBER        | Identificador único do usuário      | PRIMARY KEY               |
-| nome            | VARCHAR2(255) | Nome completo do usuário            | NOT NULL                  |
-| email           | VARCHAR2(255) | Endereço de email do usuário        | UNIQUE, NOT NULL          |
-| telefone        | VARCHAR2(255) | Número de telefone do usuário       | NOT NULL                  |
-| senha           | VARCHAR2(255) | Senha para acesso do usuário        | NOT NULL                  |
-| id_tipo_usuario | NUMBER        | Tipo do usuário (referência)        | NOT NULL, FOREIGN KEY     |
+Tabela: TIPOUSUARIO
+id_tipo_usuario: INTEGER, Chave primária, ID do tipo de usuário
+descricao: VARCHAR2(255), Descrição do tipo de usuário
 
-### 2. Tabela: `TIPOUSUARIO`
-| Campo           | Tipo de Dados | Descrição                          | Restrições    |
-|-----------------|---------------|------------------------------------|---------------|
-| id_tipo_usuario | NUMBER        | Identificador único do tipo        | PRIMARY KEY   |
-| descricao       | VARCHAR2(255) | Descrição do tipo de usuário       | NOT NULL      |
+Tabela: USUARIO
+id_usuario: INTEGER, Chave primária, ID do usuário
+nome: VARCHAR2(255), Nome do usuário
+sobrenome: VARCHAR2(255), Sobrenome do usuário
+email: VARCHAR2(255), Email do usuário, deve ser único
+senha: VARCHAR2(255), Senha do usuário
+telefone: VARCHAR2(255), Telefone do usuário
+id_tipo_usuario: INTEGER, Chave estrangeira, refere-se a TIPOUSUARIO
 
-### 3. Tabela: `LOGIN`
-| Campo          | Tipo de Dados | Descrição                            | Restrições               |
-|----------------|---------------|--------------------------------------|--------------------------|
-| id_login       | NUMBER        | Identificador único do login         | PRIMARY KEY              |
-| id_usuario     | NUMBER        | ID do usuário                        | NOT NULL, FOREIGN KEY    |
-| email          | VARCHAR2(255) | Email usado para login               | NOT NULL                 |
-| senha          | VARCHAR2(255) | Senha usada para login               | NOT NULL                 |
-| data_login     | DATE          | Data e hora do login                 | NOT NULL                 |
-| id_tipo_login  | NUMBER        | Tipo de login (referência)           | NOT NULL, FOREIGN KEY    |
+Tabela: TIPOLOGIN
+id_tipo_login: INTEGER, Chave primária, ID do tipo de login
+descricao: VARCHAR2(255), Descrição do tipo de login
 
-### 4. Tabela: `TIPOLOGIN`
-| Campo          | Tipo de Dados | Descrição                          | Restrições    |
-|----------------|---------------|------------------------------------|---------------|
-| id_tipo_login  | NUMBER        | Identificador único do tipo de login| PRIMARY KEY   |
-| descricao      | VARCHAR2(255) | Descrição do tipo de login         | NOT NULL      |
+Tabela: LOGIN
+id_login: INTEGER, Chave primária, ID do login
+id_usuario: INTEGER, Chave estrangeira, refere-se a USUARIO
+email: VARCHAR2(255), Email do login
+senha: VARCHAR2(255), Senha do login
+data_login: DATE, Data do login
+id_tipo_login: INTEGER, Chave estrangeira, refere-se a TIPOLOGIN
 
-### 5. Tabela: `SOLICITACAOSUPORTE`
-| Campo              | Tipo de Dados | Descrição                                       | Restrições               |
-|--------------------|---------------|-------------------------------------------------|--------------------------|
-| id_solicitacao     | NUMBER        | Identificador único da solicitação de suporte   | PRIMARY KEY              |
-| id_usuario         | NUMBER        | ID do usuário que fez a solicitação             | NOT NULL, FOREIGN KEY    |
-| descricao          | VARCHAR2(255) | Descrição do suporte solicitado                 | NOT NULL                 |
-| telefone           | VARCHAR2(255) | Telefone de contato                             | NOT NULL                 |
-| localizacao_origem | VARCHAR2(255) | Origem da localização do suporte                | NOT NULL                 |
-| data_solicitacao   | TIMESTAMP     | Data e hora da solicitação                      | NOT NULL                 |
-| id_animal          | NUMBER        | ID do animal (se aplicável)                     | FOREIGN KEY              |
-| id_tipo_residuo    | NUMBER        | ID do tipo de resíduo (se aplicável)            | FOREIGN KEY              |
+Tabela: CONDICAOANIMAL
+id_condicao: INTEGER, Chave primária, ID da condição do animal
+condicao: VARCHAR2(255), Descrição da condição do animal
 
-### 6. Tabela: `ANIMAIS`
-| Campo          | Tipo de Dados | Descrição                          | Restrições    |
-|----------------|---------------|------------------------------------|---------------|
-| id_animal      | NUMBER        | Identificador único do animal      | PRIMARY KEY   |
-| nome_animal    | VARCHAR2(255) | Nome do animal                     |               |
-| especie_animal | VARCHAR2(255) | Espécie do animal                  |               |
-| descricao_animal| VARCHAR2(255)| Descrição detalhada do animal      |               |
+Tabela: ANIMAL
+id_animal: INTEGER, Chave primária, ID do animal
+nome_animal: VARCHAR2(255), Nome do animal
+especie_animal: VARCHAR2(255), Espécie do animal
+descricao_animal: VARCHAR2(255), Descrição do animal
+id_condicao: INTEGER, Chave estrangeira, refere-se a CONDICAOANIMAL
 
-Vamos continuar a descrição do dicionário de dados para as tabelas restantes:
+Tabela: TIPORESIDUO
+id_tipo_residuo: INTEGER, Chave primária, ID do tipo de resíduo
+tipo: VARCHAR2(255), Tipo de resíduo
+descricao: VARCHAR2(255), Descrição do tipo de resíduo
 
-### 7. Tabela: `TIPORESIDUO`
-| Campo           | Tipo de Dados | Descrição                        | Restrições    |
-|-----------------|---------------|----------------------------------|---------------|
-| id_tipo_residuo | NUMBER        | Identificador único do tipo de resíduo | PRIMARY KEY   |
-| tipo            | VARCHAR2(255) | Tipo de resíduo                 | NOT NULL      |
-| descricao       | VARCHAR2(255) | Descrição do tipo de resíduo     | NOT NULL      |
+Tabela: OCORRENCIA
+id_solicitacao: INTEGER, Chave primária, ID da ocorrência
+id_usuario: INTEGER, Chave estrangeira, refere-se a USUARIO
+descricao: VARCHAR2(255), Descrição da ocorrência
+telefone: VARCHAR2(255), Telefone para contato
+imagem: VARCHAR2(255), URL da imagem
+longitude: VARCHAR2(255), Longitude do local da ocorrência
+latitude: VARCHAR2(255), Latitude do local da ocorrência
+data_solicitacao: TIMESTAMP, Data e hora da solicitação
+id_animal: INTEGER, Chave estrangeira, refere-se a ANIMAL
+id_tipo_residuo: INTEGER, Chave estrangeira, refere-se a TIPORESIDUO
+condicao: VARCHAR2(255), Condição da ocorrência
 
-### 8. Tabela: `PARCEIROS`
-| Campo         | Tipo de Dados | Descrição                              | Restrições    |
-|---------------|---------------|----------------------------------------|---------------|
-| id_parceiro   | NUMBER        | Identificador único do parceiro        | PRIMARY KEY   |
-| nome          | VARCHAR2(255) | Nome do parceiro                       | NOT NULL      |
-| contato       | VARCHAR2(255) | Informação de contato do parceiro      |               |
-| tipo_parceria | VARCHAR2(255) | Descrição do tipo de parceria          | NOT NULL      |
+Tabela: INVESTIDOR
+id_investidor: INTEGER, Chave primária, ID do investidor
+nome: VARCHAR2(255), Nome do investidor
+email: VARCHAR2(255), Email do investidor
+telefone: VARCHAR2(255), Telefone do investidor
+tipo_investidor: VARCHAR2(255), Tipo do investidor
+nome_empresa: VARCHAR2(255), Nome da empresa do investidor
+quantia_contribuida: DECIMAL(10,2), Quantia contribuída pelo investidor
+data_investimento: TIMESTAMP, Data do investimento
+mensagem: VARCHAR2(255), Mensagem do investidor
 
-### 9. Tabela: `FORNECEDOR`
-| Campo         | Tipo de Dados | Descrição                            | Restrições    |
-|---------------|---------------|--------------------------------------|---------------|
-| id_fornecedor | NUMBER        | Identificador único do fornecedor    | PRIMARY KEY   |
-| nome          | VARCHAR2(255) | Nome do fornecedor                   | NOT NULL      |
-| contato       | VARCHAR2(255) | Informação de contato do fornecedor  |               |
-| tipo_servico  | VARCHAR2(255) | Tipo de serviço fornecido            | NOT NULL      |
+Tabela: FORMS_FEEDBACK
+id_feedback: INTEGER, Chave primária, ID do feedback
+usuario_id: INTEGER, Chave estrangeira, refere-se a USUARIO
+nome: VARCHAR2(255), Nome do usuário que deu o feedback
+telefone: VARCHAR2(255), Telefone do usuário
+email: VARCHAR2(255), Email do usuário
+descricao: VARCHAR2(255), Descrição do feedback
+data_feedback: DATE, Data do feedback
 
-### 10. Tabela: `INVESTIDORES`
-| Campo              | Tipo de Dados | Descrição                                  | Restrições    |
-|--------------------|---------------|--------------------------------------------|---------------|
-| id_investidor      | NUMBER        | Identificador único do investidor          | PRIMARY KEY   |
-| nome               | VARCHAR2(255) | Nome do investidor                         | NOT NULL      |
-| contato            | VARCHAR2(255) | Informação de contato do investidor        |               |
-| quantia_contribuida| DECIMAL(10,2) | Quantia contribuída pelo investidor        | NOT NULL      |
-
-### 11. Tabela: `ALERTAS`
-| Campo                 | Tipo de Dados | Descrição                                    | Restrições               |
-|-----------------------|---------------|----------------------------------------------|--------------------------|
-| id_alerta             | NUMBER        | Identificador único do alerta                | PRIMARY KEY              |
-| usuario_id            | NUMBER        | ID do usuário relacionado ao alerta          | NOT NULL, FOREIGN KEY    |
-| tipo_alerta           | VARCHAR2(255) | Tipo de alerta                               | NOT NULL                 |
-| mensagem              | VARCHAR2(255) | Mensagem do alerta                           |                          |
-| data_enviado          | TIMESTAMP     | Data e hora de envio do alerta               | NOT NULL                 |
-| id_solicitacao_suporte | NUMBER        | ID da solicitação de suporte associada       | FOREIGN KEY              |
-| lido                  | NUMBER(1)     | Indicador se o alerta foi lido (0 não, 1 sim)| DEFAULT 0                |
-
-### 12. Tabela: `FEEDBACKS`
-| Campo          | Tipo de Dados | Descrição                              | Restrições               |
-|----------------|---------------|----------------------------------------|--------------------------|
-| id_feedback    | NUMBER        | Identificador único do feedback        | PRIMARY KEY              |
-| usuario_id     | NUMBER        | ID do usuário que forneceu o feedback  | NOT NULL, FOREIGN KEY    |
-| nome           | VARCHAR2(255) | Nome do usuário que forneceu o feedback| NOT NULL                 |
-| telefone       | VARCHAR2(255) | Telefone do usuário                    | NOT NULL                 |
-| email          | VARCHAR2(255) | Email do usuário                       | NOT NULL                 |
-| descricao      | VARCHAR2(255) | Descrição do feedback                  | NOT NULL                 |
-| data_feedback  | DATE          | Data quando o feedback foi fornecido   | NOT NULL                 |
-| id_stars       | NUMBER        | ID da avaliação por estrelas           | FOREIGN KEY              |
-
-### 13. Tabela: `ESTRELAS`
-| Campo              | Tipo de Dados | Descrição                         | Restrições    |
-|--------------------|---------------|-----------------------------------|---------------|
-| id_stars           | NUMBER        | Identificador único da estrela    | PRIMARY KEY
-
-
-### 14. Tabela: `LOCALIZACAO`
-| Campo         | Tipo de Dados   | Descrição                            | Restrições    |
-|---------------|-----------------|--------------------------------------|---------------|
-| id_localizacao| NUMBER          | Identificador único da localização   | PRIMARY KEY   |
-| cep           | VARCHAR2(20)    | Código postal                        |               |
-| estado        | VARCHAR2(100)   | Estado da localização                |               |
-| cidade        | VARCHAR2(100)   | Cidade da localização                |               |
-| bairro        | VARCHAR2(100)   | Bairro da localização                |               |
-| rua           | VARCHAR2(255)   | Rua da localização                   |               |
-| complemento   | VARCHAR2(255)   | Complemento do endereço              |               |
-| data_cadastro | DATE            | Data de cadastro da localização      |               |
-| longitude     | DECIMAL(9, 6)   | Longitude geográfica                 |               |
-| latitude      | DECIMAL(9, 6)   | Latitude geográfica                  |               |
-
-
+Tabela: NEWSLETTER
+id_news: INTEGER, Chave primária, ID da newsletter
+email: VARCHAR2(255), Email do destinatário
+data_envio: DATE, Data de envio da newsletter
+status: VARCHAR2(255), Status do envio da newsletter
