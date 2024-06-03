@@ -1,188 +1,198 @@
---AQUI SERA O CODIGO OFICIAL PARA A ENTREGA
-
 -- Nome dos Integrantes: 
 -- Claudio Silva Bispo RM553472
 -- Patricia Naomi Yamagishi RM552981
 -- Sabrina da Motta Café RM553568
 
 -- Deletar tabelas caso já existam
-DROP TABLE FORMS_FEEDBACK CASCADE CONSTRAINTS;
-DROP TABLE INVESTIDOR CASCADE CONSTRAINTS;
-DROP TABLE LOGIN CASCADE CONSTRAINTS;
-DROP TABLE OCORRENCIA CASCADE CONSTRAINTS;
-DROP TABLE ANIMAL CASCADE CONSTRAINTS;
-DROP TABLE CONDICAOANIMAL CASCADE CONSTRAINTS;
-DROP TABLE NEWSLETTER CASCADE CONSTRAINTS;
-DROP TABLE USUARIO CASCADE CONSTRAINTS;
-DROP TABLE TIPOLOGIN CASCADE CONSTRAINTS;
-DROP TABLE TIPORESIDUO CASCADE CONSTRAINTS;
-DROP TABLE TIPOUSUARIO CASCADE CONSTRAINTS;
+DROP TABLE Form_Feedback CASCADE CONSTRAINTS;
+DROP TABLE Investidor CASCADE CONSTRAINTS;
+DROP TABLE Login CASCADE CONSTRAINTS;
+DROP TABLE Ocorrencia CASCADE CONSTRAINTS;
+DROP TABLE Animal CASCADE CONSTRAINTS;
+DROP TABLE Condicao_Animal CASCADE CONSTRAINTS;
+DROP TABLE Newsletter CASCADE CONSTRAINTS;
+DROP TABLE Usuario CASCADE CONSTRAINTS;
+DROP TABLE Tipo_Login CASCADE CONSTRAINTS;
+DROP TABLE Tipo_Residuo CASCADE CONSTRAINTS;
+DROP TABLE Tipo_Usuario CASCADE CONSTRAINTS;
 
 -- Criação das tabelas
 
--- TipoUsuario
-CREATE TABLE TIPOUSUARIO (
+-- Tipo_Usuario
+CREATE TABLE Tipo_Usuario (
     id_tipo_usuario INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
-    descricao VARCHAR2(255) NOT NULL
+    desc_tipo_usuario VARCHAR2(255) NOT NULL
 );
-ALTER TABLE TIPOUSUARIO ADD CONSTRAINT tipousuario_pk PRIMARY KEY(id_tipo_usuario);
+ALTER TABLE Tipo_Usuario ADD CONSTRAINT tipo_usuario_pk PRIMARY KEY(id_tipo_usuario);
 
 -- Usuario
-CREATE TABLE USUARIO (
+CREATE TABLE Usuario (
     id_usuario INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
-    nome VARCHAR2(255) NOT NULL,
-    sobrenome VARCHAR2(255) NOT NULL,
-    email VARCHAR2(255) CONSTRAINT email_unique UNIQUE NOT NULL,
-    senha VARCHAR2(255) NOT NULL,
-    id_tipo_usuario INTEGER NOT NULL,
-    telefone VARCHAR2(255) NOT NULL,
-    CONSTRAINT usuario_pk PRIMARY KEY(id_usuario)
+    nome_usuario VARCHAR2(255) NOT NULL,
+    sobrenome_usuario VARCHAR2(255) NOT NULL,
+    email_usuario VARCHAR2(255) CONSTRAINT email_unique UNIQUE NOT NULL,
+    senha_usuario VARCHAR2(255) NOT NULL,
+    telefone_usuario VARCHAR2(30) NOT NULL,
+    id_tipo_usuario INTEGER NOT NULL
 );
-ALTER TABLE USUARIO ADD CONSTRAINT fk_tipo_usuario FOREIGN KEY (id_tipo_usuario) REFERENCES TIPOUSUARIO(id_tipo_usuario);
+ALTER TABLE Usuario ADD CONSTRAINT usuario_pk PRIMARY KEY(id_usuario);
 
--- TipoLogin
-CREATE TABLE TIPOLOGIN (
+-- Tipo_Login
+CREATE TABLE Tipo_Login (
     id_tipo_login INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
-    descricao VARCHAR2(255) NOT NULL
+    desc_tipo_login VARCHAR2(255) NOT NULL
 );
-ALTER TABLE TIPOLOGIN ADD CONSTRAINT tipologin_pk PRIMARY KEY(id_tipo_login);
+ALTER TABLE Tipo_Login ADD CONSTRAINT tipo_login_pk PRIMARY KEY(id_tipo_login);
 
 -- Login
-CREATE TABLE LOGIN (
+CREATE TABLE Login (
     id_login INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
+    email_login VARCHAR2(255) NOT NULL,
+    senha_login VARCHAR2(255) NOT NULL,
+    data_login TIMESTAMP NOT NULL,
     id_usuario INTEGER NOT NULL,
-    email VARCHAR2(255) NOT NULL,
-    senha VARCHAR2(255) NOT NULL,
-    data_login DATE NOT NULL,
-    id_tipo_login INTEGER NOT NULL,
-    CONSTRAINT login_pk PRIMARY KEY(id_login)
+    id_tipo_login INTEGER NOT NULL
 );
-ALTER TABLE LOGIN ADD CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario);
-ALTER TABLE LOGIN ADD CONSTRAINT fk_tipo_login FOREIGN KEY (id_tipo_login) REFERENCES TIPOLOGIN(id_tipo_login);
+ALTER TABLE Login ADD CONSTRAINT login_pk PRIMARY KEY(id_login);
 
--- CondicaoAnimal
-CREATE TABLE CONDICAOANIMAL (
+-- Condicao_Animal
+CREATE TABLE Condicao_Animal (
     id_condicao INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
-    condicao VARCHAR2(255) NOT NULL
+    desc_condicao VARCHAR2(255) NOT NULL
 );
-ALTER TABLE CONDICAOANIMAL ADD CONSTRAINT condicaoanimal_pk PRIMARY KEY(id_condicao);
+ALTER TABLE Condicao_Animal ADD CONSTRAINT condicaoanimal_pk PRIMARY KEY(id_condicao);
 
 -- Animal
-CREATE TABLE ANIMAL (
+CREATE TABLE Animal (
     id_animal INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
     nome_animal VARCHAR2(255),
     especie_animal VARCHAR2(255),
-    descricao_animal VARCHAR2(255),
-    id_condicao INTEGER,
-    CONSTRAINT animal_pk PRIMARY KEY(id_animal)
+    desc_animal VARCHAR2(255),
+    id_condicao INTEGER NOT NULL
 );
-ALTER TABLE ANIMAL ADD CONSTRAINT fk_id_condicao FOREIGN KEY (id_condicao) REFERENCES CONDICAOANIMAL(id_condicao);
+ALTER TABLE Animal ADD CONSTRAINT animal_pk PRIMARY KEY(id_animal);
 
--- TipoResiduo
-CREATE TABLE TIPORESIDUO (
+-- Tipo_Residuo
+CREATE TABLE Tipo_Residuo (
     id_tipo_residuo INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
-    tipo VARCHAR2(255) NOT NULL,
-    descricao VARCHAR2(255) NOT NULL
+    nome_tipo_residuo VARCHAR2(255) NOT NULL,
+    desc_tipo_residuo VARCHAR2(255) NOT NULL
 );
-ALTER TABLE TIPORESIDUO ADD CONSTRAINT tiporesiduo_pk PRIMARY KEY(id_tipo_residuo);
+ALTER TABLE Tipo_Residuo ADD CONSTRAINT tiporesiduo_pk PRIMARY KEY(id_tipo_residuo);
 
 -- Ocorrencia
-CREATE TABLE OCORRENCIA (
-    id_solicitacao INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
-    id_usuario INTEGER NOT NULL,
-    descricao VARCHAR2(255),
-    telefone VARCHAR2(255) NOT NULL,
-    imagem VARCHAR2(255),
-    longitude VARCHAR2(255),
-    latitude VARCHAR2(255),
+CREATE TABLE Ocorrencia (
+    id_solicitacao INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL, 
+    desc_ocorr VARCHAR2(255),
+    tel_ocorr VARCHAR2(255) NOT NULL,
+    img_ocorr VARCHAR2(255),
+    long_ocorr VARCHAR2(255),
+    lat_ocorr VARCHAR2(255),
     data_solicitacao TIMESTAMP NOT NULL,
+    condicao_ocorr VARCHAR2(255) NOT NULL,
+    id_usuario INTEGER NOT NULL,
     id_animal INTEGER,
-    id_tipo_residuo INTEGER,
-    condicao VARCHAR2(255) NOT NULL,
-    CONSTRAINT ocorrencia_pk PRIMARY KEY(id_solicitacao)
+    id_tipo_residuo INTEGER
 );
-ALTER TABLE OCORRENCIA ADD CONSTRAINT fk_usuario_ocorrencia FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario);
-ALTER TABLE OCORRENCIA ADD CONSTRAINT fk_animal FOREIGN KEY (id_animal) REFERENCES ANIMAL(id_animal);
-ALTER TABLE OCORRENCIA ADD CONSTRAINT fk_tipo_residuo FOREIGN KEY (id_tipo_residuo) REFERENCES TIPORESIDUO(id_tipo_residuo);
+ALTER TABLE Ocorrencia ADD CONSTRAINT ocorrencia_pk PRIMARY KEY(id_solicitacao);
 
 -- Investidor
-CREATE TABLE INVESTIDOR (
+CREATE TABLE Investidor (
     id_investidor INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
-    nome VARCHAR2(255) NOT NULL,
-    email VARCHAR2(255) NOT NULL,
-    telefone VARCHAR2(255) NOT NULL,
-    tipo_investidor VARCHAR2(255) NOT NULL,
-    nome_empresa VARCHAR2(255) NOT NULL,
-    quantia_contribuida DECIMAL(10, 2) NOT NULL,
-    data_investimento TIMESTAMP NOT NULL,
-    mensagem VARCHAR2(255) NOT NULL,
-    CONSTRAINT investidor_pk PRIMARY KEY(id_investidor)
+    nome_inv VARCHAR2(255) NOT NULL,
+    email_inv VARCHAR2(255) NOT NULL,
+    telefone_inv VARCHAR2(255) NOT NULL,
+    nome_empresa_inv VARCHAR2(255) NOT NULL,
+    quantia_contribuida_inv DECIMAL(10, 2) NOT NULL,
+    data_investimento_inv TIMESTAMP NOT NULL,
+    msg_inv VARCHAR2(255) NOT NULL,
+    tipo_investidor_inv VARCHAR2(255) NOT NULL 
 );
+ALTER TABLE Investidor ADD CONSTRAINT investidor_pk PRIMARY KEY(id_investidor);
 
--- Forms_Feedback
-CREATE TABLE FORMS_FEEDBACK (
-    id_feedback INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
-    usuario_id INTEGER NOT NULL,
-    nome VARCHAR2(255) NOT NULL,
-    telefone VARCHAR2(255) NOT NULL,
-    email VARCHAR2(255) NOT NULL,
-    descricao VARCHAR2(255) NOT NULL,
-    data_feedback DATE NOT NULL,
-    CONSTRAINT forms_feedback_pk PRIMARY KEY(id_feedback)
+-- Form_Feedback
+CREATE TABLE Form_Feedback (
+    id_feedback INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL, 
+    nome_feedback VARCHAR2(255) NOT NULL,
+    tel_feedback VARCHAR2(255) NOT NULL,
+    email_feedback VARCHAR2(255) NOT NULL,
+    desc_feedback VARCHAR2(255) NOT NULL,
+    data_feedback TIMESTAMP NOT NULL,
+    id_usuario INTEGER NOT NULL
 );
-ALTER TABLE FORMS_FEEDBACK ADD CONSTRAINT fk_usuario_feedback FOREIGN KEY (usuario_id) REFERENCES USUARIO(id_usuario);
+ALTER TABLE Form_Feedback ADD CONSTRAINT forms_feedback_pk PRIMARY KEY(id_feedback);
 
 -- Newsletter
-CREATE TABLE NEWSLETTER (
+CREATE TABLE Newsletter (
     id_news INTEGER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1) NOT NULL,
-    email VARCHAR2(255) NOT NULL,
-    data_envio DATE NOT NULL,
-    status VARCHAR2(255) NOT NULL,
-    CONSTRAINT newsletter_pk PRIMARY KEY(id_news)
+    email_news VARCHAR2(255) NOT NULL,
+    data_envio_news TIMESTAMP NOT NULL,
+    status_news VARCHAR2(10) NOT NULL
 );
+ALTER TABLE Newsletter ADD CONSTRAINT newsletter_pk PRIMARY KEY(id_news);
+
+-- Inserindo Foreign Keys
+-- FK na tabela Usuario
+ALTER TABLE Usuario
+ADD CONSTRAINT tipo_usuario_fk FOREIGN KEY (id_tipo_usuario) REFERENCES Tipo_Usuario(id_tipo_usuario);
+
+-- Fks na tabela Login
+ALTER TABLE Login ADD CONSTRAINT usuario_fk FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario);
+ALTER TABLE Login ADD CONSTRAINT tipo_login_fk FOREIGN KEY (id_tipo_login) REFERENCES Tipo_Login(id_tipo_login);
+
+-- Fk na tabela Animal
+ALTER TABLE Animal ADD CONSTRAINT condicao_fk FOREIGN KEY (id_condicao) REFERENCES Condicao_Animal(id_condicao);
+
+-- Fk na tabela Ocorrencia
+ALTER TABLE Ocorrencia ADD CONSTRAINT fk_usuario_ocorrencia FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario);
+ALTER TABLE Ocorrencia ADD CONSTRAINT fk_animal FOREIGN KEY (id_animal) REFERENCES Animal(id_animal);
+ALTER TABLE Ocorrencia ADD CONSTRAINT fk_tipo_residuo FOREIGN KEY (id_tipo_residuo) REFERENCES Tipo_Residuo(id_tipo_residuo);
+
+-- Fk na tabela Form_Feedback
+ALTER TABLE Form_Feedback ADD CONSTRAINT fk_usuario_feedback FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario);
+
 
 -- Inserção de dados
 
--- Inserção de dados na tabela TipoUsuario
-INSERT INTO TIPOUSUARIO (descricao) VALUES ('Administrador');
-INSERT INTO TIPOUSUARIO (descricao) VALUES ('Usuário');
+-- Inserção de dados na tabela Tipo_Usuario
+INSERT INTO Tipo_Usuario (desc_tipo_usuario) VALUES ('Administrador');
+INSERT INTO Tipo_Usuario (desc_tipo_usuario) VALUES ('Usuário');
 
--- Inserção de dados na tabela TipoLogin
-INSERT INTO TIPOLOGIN (descricao) VALUES ('Email e Senha');
-INSERT INTO TIPOLOGIN (descricao) VALUES ('Google');
-INSERT INTO TIPOLOGIN (descricao) VALUES ('Facebook');
+-- Inserção de dados na tabela Tipo_Login
+INSERT INTO Tipo_Login (desc_tipo_login) VALUES ('Email e Senha');
+INSERT INTO Tipo_Login (desc_tipo_login) VALUES ('Google');
+INSERT INTO Tipo_Login (desc_tipo_login) VALUES ('Facebook');
 
--- Inserção de dados na tabela CondicaoAnimal
-INSERT INTO CONDICAOANIMAL (condicao) VALUES ('Saudável');
-INSERT INTO CONDICAOANIMAL (condicao) VALUES ('Doente');
-INSERT INTO CONDICAOANIMAL (condicao) VALUES ('Ferido');
-INSERT INTO CONDICAOANIMAL (condicao) VALUES ('Morto');
+-- Inserção de dados na tabela Condicao_Animal
+INSERT INTO Condicao_Animal (desc_condicao) VALUES ('Saudável');
+INSERT INTO Condicao_Animal (desc_condicao) VALUES ('Doente');
+INSERT INTO Condicao_Animal (desc_condicao) VALUES ('Ferido');
+INSERT INTO Condicao_Animal (desc_condicao) VALUES ('Morto');
 
--- Inserção de dados na tabela TipoResiduo
-INSERT INTO TIPORESIDUO (tipo, descricao) VALUES ('Plástico', 'Resíduos plásticos');
-INSERT INTO TIPORESIDUO (tipo, descricao) VALUES ('Metal', 'Resíduos metálicos');
-INSERT INTO TIPORESIDUO (tipo, descricao) VALUES ('Vidro', 'Resíduos de vidro');
-INSERT INTO TIPORESIDUO (tipo, descricao) VALUES ('Papel', 'Resíduos de papel');
+-- Inserção de dados na tabela Tipo_Residuo
+INSERT INTO Tipo_Residuo (nome_tipo_residuo, desc_tipo_residuo) VALUES ('Plástico', 'Resíduos plásticos');
+INSERT INTO Tipo_Residuo (nome_tipo_residuo, desc_tipo_residuo) VALUES ('Metal', 'Resíduos metálicos');
+INSERT INTO Tipo_Residuo (nome_tipo_residuo, desc_tipo_residuo) VALUES ('Vidro', 'Resíduos de vidro');
+INSERT INTO Tipo_Residuo (nome_tipo_residuo, desc_tipo_residuo) VALUES ('Papel', 'Resíduos de papel');
 
 COMMIT;
 
 -- Verificando as inserções com SELECT
-SELECT * FROM TIPOUSUARIO;
-SELECT * FROM TIPOLOGIN;
-SELECT * FROM CONDICAOANIMAL;
-SELECT * FROM TIPORESIDUO;
+SELECT * FROM Tipo_Usuario;
+SELECT * FROM Tipo_Login;
+SELECT * FROM Condicao_Animal;
+SELECT * FROM Tipo_Residuo;
 
 -- Exemplos de Atualização de dados (UPDATE)
 -- Alteração da descrição do tipo de resíduo de id 1
-UPDATE TIPORESIDUO
-SET descricao = 'Resíduos plásticos recicláveis'
+UPDATE Tipo_Residuo
+SET desc_tipo_residuo = 'Resíduos plásticos recicláveis'
 WHERE id_tipo_residuo = 1;
 
 COMMIT;
 
 -- Exemplos de Remoção de dados (DELETE)
--- Deletar registros da tabela TipoResiduo onde tipo é 'Papel'
-DELETE FROM TIPORESIDUO WHERE tipo = 'Papel';
+-- Deletar registros da tabela Tipo_Residuo onde nome_tipo_residuo é 'Papel'
+DELETE FROM Tipo_Residuo WHERE nome_tipo_residuo = 'Papel';
 
 COMMIT;
-
