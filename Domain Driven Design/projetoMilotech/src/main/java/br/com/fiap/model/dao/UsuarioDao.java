@@ -14,12 +14,7 @@ public interface UsuarioDao {
      */
     void inserir(Usuario usuario);
 
-    /**
-     * Lista os registros de usuários do banco de dados.
-     *
-     * @param usuario o usuário a ser listado.
-     */
-    void listar(Usuario usuario);
+    Usuario encontrarUsuario(int idUsuario);
 
     /**
      * Atualiza um registro de usuário no banco de dados.

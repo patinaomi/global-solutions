@@ -12,7 +12,6 @@ public class Usuario {
     private String email;
     private String senha;
     private long telefone;
-    private int idTipoUsuario;
 
     //Construtor
     public Usuario() {
@@ -68,13 +67,6 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    public int getIdTipoUsuario() {
-        return idTipoUsuario;
-    }
-
-    public void setIdTipoUsuario(int idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
-    }
 
     //ToString para formatar os dados
     @Override
@@ -83,7 +75,6 @@ public class Usuario {
                 "\nSobrenome: " + getSobrenome() +
                 "\nE-mail: " + getEmail() +
                 "\nSenha: " + getSenha() +
-                "\nTelefone: " + getTelefone() +
-                "\nId Tipo Usuário: " + getIdTipoUsuario();
+                "\nTelefone: " + getTelefone();
     }
 }
