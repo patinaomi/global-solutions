@@ -467,18 +467,19 @@ ORDER BY "Hora de Entrada" ASC;
 
 
 -- Relatório usando between e like
--- Ocorrências Ativas com Mensagem Contendo "encontrado"
-SELECT id_solicitacao as "Id",
-       nome_ocorr as "Nome",
-       tel_ocorr as "Telefone",
-       email_ocorr as "E-mail",
-       msg_ocorr as "Mensagem",
-       data_solicitacao as "Data da Solicitação",
-       status_ocorr as "Status"
-FROM T_Ocorrencia
-WHERE status_ocorr = 1
-AND LOWER(msg_ocorr) LIKE '%encontrado%'
-ORDER BY "Data da Solicitação";
+-- Investimentos durante o mês de Junho com mensagens contendo "pesquisa"
+SELECT id_investidor as "Id",
+nome_inv as "Nome",
+email_inv as "E-mail",
+telefone_inv as "Telefone",
+nome_empresa_inv as "Empresa",
+quantia_contribuida_inv as "Quantia Contribuída",
+data_investimento_inv as "Data do Investimento",
+msg_inv as "Mensagem"
+FROM T_Investidor
+WHERE data_investimento_inv BETWEEN TO_TIMESTAMP('2024-06-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS') AND TO_TIMESTAMP('2024-06-30 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+AND LOWER(msg_inv) LIKE '%pesquisa%'
+ORDER BY data_investimento_inv;
 
 
 -- Relatório usando função caractere
@@ -509,8 +510,9 @@ ORDER BY data_envio_news;
 
 -- Relatório usando group by
 -- Ocorrências Agrupadas por Estado
-SELECT es.nome_estado as "Estado",
-       COUNT(*) as "Total de Ocorrências"
+SELECT 
+es.nome_estado as "Estado",
+COUNT(*) as "Total de Ocorrências"
 FROM T_Ocorrencia o
 JOIN T_Endereco e ON o.id_endereco = e.id_end
 JOIN T_Estado es ON e.id_estado = es.id_estado
@@ -537,12 +539,13 @@ ORDER BY o.data_solicitacao;
 
 -- Relatório usando junção de diferença
 -- Ocorrências Sem Registar Tipo de Resíduo
-SELECT o.id_solicitacao as "Id",
-       o.nome_ocorr as "Nome",
-       o.tel_ocorr as "Telefone",
-       o.email_ocorr as "E-mail",
-       o.data_solicitacao as "Data da Solicitação",
-       o.msg_ocorr as "Mensagem"
+SELECT 
+o.id_solicitacao as "Id",
+o.nome_ocorr as "Nome",
+o.tel_ocorr as "Telefone",
+o.email_ocorr as "E-mail",
+o.data_solicitacao as "Data da Solicitação",
+o.msg_ocorr as "Mensagem"
 FROM T_Ocorrencia o
 LEFT JOIN T_Tipo_Residuo tr ON o.id_tipo_residuo = tr.id_tipo_residuo
 WHERE tr.id_tipo_residuo IS NULL;
