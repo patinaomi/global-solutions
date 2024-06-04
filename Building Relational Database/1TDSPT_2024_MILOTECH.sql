@@ -352,20 +352,20 @@ VALUES ('Paraná', 'PR');
 
 
 -- Inserção de dados na tabela Endereco
-INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, estado_end, id_estado) 
-VALUES ('Rua das Flores', 'Jardim Primavera', '12345-678', 'São Paulo', 'SP', 1);
+INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, id_estado) 
+VALUES ('Rua das Flores', 'Jardim Primavera', '12345-678', 'São Paulo', 1);
 
-INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, estado_end, id_estado) 
-VALUES ('Avenida Atlântica', 'Copacabana', '23456-789', 'Rio de Janeiro', 'RJ', 2);
+INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, id_estado) 
+VALUES ('Avenida Atlântica', 'Copacabana', '23456-789', 'Rio de Janeiro', 2);
 
-INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, estado_end, id_estado) 
-VALUES ('Praça da Liberdade', 'Savassi', '34567-890', 'Belo Horizonte', 'MG', 3);
+INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, id_estado) 
+VALUES ('Praça da Liberdade', 'Savassi', '34567-890', 'Belo Horizonte', 3);
 
-INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, estado_end, id_estado) 
-VALUES ('Rua das Mangueiras', 'Pituba', '45678-901', 'Salvador', 'BA', 4);
+INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, id_estado) 
+VALUES ('Rua das Mangueiras', 'Pituba', '45678-901', 'Salvador', 4);
 
-INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, estado_end, id_estado) 
-VALUES ('Rua XV de Novembro', 'Centro', '56789-012', 'Curitiba', 'PR', 5);
+INSERT INTO T_Endereco (rua_end, bairro_end, cep_end, cidade_end, id_estado) 
+VALUES ('Rua XV de Novembro', 'Centro', '56789-012', 'Curitiba', 5);
 
 
 -- Inserção de dados na tabela Ocorrencia
@@ -465,7 +465,23 @@ hora_saida_vis as "Hora de Saída"
 FROM T_Visitante
 ORDER BY "Hora de Entrada" ASC;
 
+
 -- Relatório usando between e like
+-- Ocorrências Ativas com Mensagem Contendo "encontrado"
+SELECT id_solicitacao as "Id",
+       nome_ocorr as "Nome",
+       tel_ocorr as "Telefone",
+       email_ocorr as "E-mail",
+       msg_ocorr as "Mensagem",
+       data_solicitacao as "Data da Solicitação",
+       status_ocorr as "Status"
+FROM T_Ocorrencia
+WHERE status_ocorr = 1
+AND LOWER(msg_ocorr) LIKE '%encontrado%'
+ORDER BY "Data da Solicitação";
+
+
+-- Relatório usando função caractere
 -- Feedbacks com Mensagens Contendo "bom" do Mês de Junho
 SELECT id_feedback as "Id",
 nome_feedback as "Nome",
@@ -479,13 +495,54 @@ WHERE data_feedback BETWEEN TO_TIMESTAMP('2024-06-01 00:00:00', 'YYYY-MM-DD HH24
 AND LOWER(msg_feedback) LIKE '%bom%'
 ORDER BY "Nome";
 
--- Relatório usando função caracter
-
 
 -- Relatório usando função data
+-- Newsletters com Datas Formatadas e Dia da Semana
+SELECT id_news as "Id",
+email_news as "E-mail",
+TO_CHAR(data_envio_news, 'DD/MM/YYYY HH24:MI:SS') as "Data de Envio",
+TO_CHAR(data_envio_news, 'Day') as "Dia da Semana",
+status_news as "Status"
+FROM T_Newsletter
+ORDER BY data_envio_news;
 
--- Relatório usando groupby
+
+-- Relatório usando group by
+-- Ocorrências Agrupadas por Estado
+SELECT es.nome_estado as "Estado",
+       COUNT(*) as "Total de Ocorrências"
+FROM T_Ocorrencia o
+JOIN T_Endereco e ON o.id_endereco = e.id_end
+JOIN T_Estado es ON e.id_estado = es.id_estado
+GROUP BY es.nome_estado;
+
 
 -- Relatório usando junção de equivalência
+-- Relatório de Ocorrências com Detalhes do Endereço
+SELECT 
+o.id_solicitacao as "Id",
+o.data_solicitacao as "Data da Solicitação",
+o.nome_ocorr as "Nome",
+o.tel_ocorr as "Telefone",
+o.email_ocorr as "E-mail",
+e.rua_end as "Rua",
+e.bairro_end as "Bairro",
+e.cidade_end as "Cidade",
+es.sigla_estado as "Sigla"
+FROM T_Ocorrencia o
+JOIN T_Endereco e ON o.id_endereco = e.id_end
+JOIN T_Estado es ON e.id_estado = es.id_estado
+ORDER BY o.data_solicitacao;
+
 
 -- Relatório usando junção de diferença
+-- Ocorrências Sem Registar Tipo de Resíduo
+SELECT o.id_solicitacao as "Id",
+       o.nome_ocorr as "Nome",
+       o.tel_ocorr as "Telefone",
+       o.email_ocorr as "E-mail",
+       o.data_solicitacao as "Data da Solicitação",
+       o.msg_ocorr as "Mensagem"
+FROM T_Ocorrencia o
+LEFT JOIN T_Tipo_Residuo tr ON o.id_tipo_residuo = tr.id_tipo_residuo
+WHERE tr.id_tipo_residuo IS NULL;
