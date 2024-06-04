@@ -91,7 +91,7 @@ CREATE TABLE OCORRENCIA (
     id_animal INTEGER,
     id_tipo_residuo INTEGER,
     descricao VARCHAR2(255),
-    pais VARCHAR2(255),
+    ATENÇÃO TIRAR DO ARQUIVO DML AS LINHAS DE PAIS, POIS EU FIZ COM ELAS.
     estado VARCHAR2(255),
     cidade VARCHAR2(255),
     cep VARCHAR2(255),
@@ -112,7 +112,7 @@ CREATE TABLE INVESTIDOR (
     nome_empresa VARCHAR2(255) NOT NULL,
     quantia_contribuida DECIMAL(10, 2) NOT NULL,
     data_investimento TIMESTAMP NOT NULL,
-    descricao VARCHAR2(255) NOT NULL,
+    mensagem VARCHAR2(255) NOT NULL,
     CONSTRAINT investidor_pk PRIMARY KEY(id_investidor)
 );
 
@@ -123,7 +123,7 @@ CREATE TABLE FORMS_FEEDBACK (
     telefone VARCHAR2(255) NOT NULL,
     email VARCHAR2(255) NOT NULL,
     nota NUMBER(1) NOT NULL,
-    descricao VARCHAR2(255) NOT NULL,
+    mensagem VARCHAR2(255) NOT NULL,
     data_feedback DATE NOT NULL,
     CONSTRAINT forms_feedback_pk PRIMARY KEY(id_feedback)
 );
@@ -136,5 +136,7 @@ CREATE TABLE NEWSLETTER (
     status VARCHAR2(255) NOT NULL,
     CONSTRAINT newsletter_pk PRIMARY KEY(id_news)
 );
+
+criar tabela de endereço
 
 COMMIT;
