@@ -4,7 +4,7 @@
 - RM553568: Sabrina Café
 
 # Descrição do Projeto:
-   A Milotech está desenvolvendo uma solução tecnológica inovadora focada no resgate de animais marinhos em situação de risco devido a atividades antrópicas. Através de um site intuitivo e acessível, os usuários poderão chamar a empresa para realizar resgates, enviando a localização exata e fotos dos animais em perigo via integração com a API do Google Maps.
+   A Milotech está desenvolvendo uma solução tecnológica inovadora focada no resgate de animais marinhos em situação de risco devido a atividades antrópicas. Através de um site intuitivo e acessível, os usuários poderão chamar a empresa por meio do nosso website ou chatbot integrado ao Telegram para realizar resgates de animais encalhados, enviando a localização exata e fotos dos mesmos em perigo via integração com a API do Google Maps.
 
    A Milotech se compromete a tornar a plataforma acessível a todos os usuários, incorporando recursos de acessibilidade como VLibras, Chatbot com text to speech e speech to text, alteração de tema para claro e escuro, escolha de idioma e modificação de tamanho de fonte para garantir uma experiência inclusiva. O objetivo é não apenas resgatar animais marinhos, mas também promover a conscientização e a preservação dos oceanos, contribuindo para um futuro sustentável.
 
