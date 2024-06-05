@@ -70,17 +70,20 @@ CREATE TABLE Ocorrencia_Animal (
   tel_ocorr VARCHAR2(30),
   id_animal INTEGER REFERENCES Animal(id_animal),
   id_condicao_animal INTEGER REFERENCES Condicao_Animal(id_condicao),
-  first_aid_ocorr VARCHAR2(10),
-  rua_ocorr VARCHAR2(255),
+  first_aid_ocorr VARCHAR2(10), -- Sim ou Não
   cep_ocorr VARCHAR2(20),
-  cidade_ocorr VARCHAR2(80),
   estado_ocorr VARCHAR2(40),
+  cidade_ocorr VARCHAR2(80),
+  rua_ocorr VARCHAR2(255),
+  complemento_ocorr VARCHAR2(255), -- complemento do endereço
   msg_ocorr VARCHAR2(255),
+  img_ocorr VARCHAR2(255), 
+  lat_ocorr VARCHAR2(50),
+  long_ocorr VARCHAR2(50),
   data_solicitacao TIMESTAMP,
   status_ocorr CHAR(1) CHECK (status_ocorr IN ('0', '1')),
   id_visitante INTEGER REFERENCES Visitante(id_visitante),
-  lat_ocorr VARCHAR2(50),
-  long_ocorr VARCHAR2(50)
+  
 );
 
 -- Ainda não alterei essa tabela
@@ -90,14 +93,23 @@ CREATE TABLE Ocorrencia_Poluente (
   email_ocorr VARCHAR2(80),
   tel_ocorr VARCHAR2(30),
   id_tipo_residuo INTEGER REFERENCES Tipo_Residuo(id_tipo_residuo),
+  qtd_residuo_ocorr NUMBER,
+  area_perigo_ocorr VARCHAR2(20), -- Sim ou Não
+  cep_end VARCHAR2(20),
+  estado_end VARCHAR2(40),
+  cidade_end VARCHAR2(80),
+  rua_end VARCHAR2(255),
+  comp_end VARCHAR2(255),
+  msg_ocorr VARCHAR2(255),
+  img_ocorr VARCHAR2(255),
   lat_ocorr VARCHAR2(50),
   long_ocorr VARCHAR2(50),
-  rua_end VARCHAR2(255),
+  
   bairro_end VARCHAR2(255),
-  cep_end VARCHAR2(20),
-  cidade_end VARCHAR2(80),
-  estado_end VARCHAR2(40),
-  msg_ocorr VARCHAR2(255),
+  
+  
+  
+  
   data_solicitacao TIMESTAMP,
   status_ocorr CHAR(1) CHECK (status_ocorr IN ('0', '1')),
   id_visitante INTEGER REFERENCES Visitante(id_visitante)
