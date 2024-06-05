@@ -114,6 +114,14 @@
             <version>12.0.1</version>
         </dependency>
 
+        <!-- Dependência para Servlet API (necessário para ServletContextListener) -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope> <!-- 'provided' porque o Tomcat já fornece isso em runtime -->
+        </dependency>
+
     </dependencies>
 
 </project>
