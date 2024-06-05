@@ -31,7 +31,7 @@ public class OpenAiService {
      * @return Um texto educacional gerado ou null se ocorrer um erro na requisição.
      * @throws Exception Se ocorrer um erro ao fazer a requisição para a OpenAI.
      */
-    public String gerarInformacaoMarinha(String consulta) {
+    public String gerarInformacao(String consulta) {
         String systemText = """
                 Você é um biólogo marinho.
                 Seu papel é educar as pessoas sobre conservação marinha e vida marinha.
