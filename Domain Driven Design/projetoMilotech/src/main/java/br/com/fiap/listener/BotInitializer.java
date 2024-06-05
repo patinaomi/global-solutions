@@ -21,8 +21,4 @@ public class BotInitializer implements ServletContextListener {
         System.out.println("Bot do Telegram iniciado com sucesso.");
     }
 
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        // Limpeza quando o Tomcat é desligado, se necessário
-    }
 }

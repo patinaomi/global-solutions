@@ -15,6 +15,7 @@ import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.Message;
+import com.pengrad.telegrambot.model.request.*;
 import com.pengrad.telegrambot.request.SendAudio;
 import com.pengrad.telegrambot.request.SendMessage;
 
@@ -86,10 +87,13 @@ public class TelegramService {
                     opcaoCadastro(chatId);
                     break;
                 case "/educacao":
-                    opcaoEducacao(chatId, userText);
+                    opcaoEducacao(chatId);
                     break;
                 case "/ocorrencia":
                     opcaoOcorrencia(chatId);
+                    break;
+                case "/site":
+                    opcaoSite(chatId);
                     break;
                 default:
                     opcaoDefault(chatId);
@@ -116,12 +120,20 @@ public class TelegramService {
         try {
             switch (state) {
                 case "awaiting_first_name":
+                    if (!Validacoes.validarUsuario(userText)) {
+                        bot.execute(new SendMessage(chatId, "Erro: Nome inválido. O nome deve ter entre 2 e 30 caracteres."));
+                        return;
+                    }
                     usuario.setNome(userText);
                     tempUsers.put(chatId, usuario);
                     userStates.put(chatId, "awaiting_last_name");
                     bot.execute(new SendMessage(chatId, "Digite seu sobrenome:"));
                     break;
                 case "awaiting_last_name":
+                    if (!Validacoes.validarUsuario(userText)) {
+                        bot.execute(new SendMessage(chatId, "Erro: Sobrenome inválido. O sobrenome deve ter entre 2 e 30 caracteres."));
+                        return;
+                    }
                     usuario.setSobrenome(userText);
                     tempUsers.put(chatId, usuario);
                     userStates.put(chatId, "awaiting_email");
@@ -167,9 +179,13 @@ public class TelegramService {
         }
     }
 
-    private void opcaoEducacao(String chatId, String query) {
+    private void opcaoEducacao(String chatId) {
         bot.execute(new SendMessage(chatId, "Escreva a sua pergunta:"));
-        String responseText = openAiService.gerarInformacao(query);
+        userStates.put(chatId, "awaiting_educacao_query");
+    }
+
+    private void fluxoEducacao(String chatId, String userText) {
+        String responseText = openAiService.gerarInformacao(userText);
 
         if (responseText != null) {
             File audioFile = textToSpeechService.synthesizeToFile(responseText);
@@ -187,6 +203,8 @@ public class TelegramService {
         } else {
             bot.execute(new SendMessage(chatId, "Desculpe, não consegui gerar uma resposta no momento."));
         }
+
+        userStates.remove(chatId);
     }
 
     private void opcaoOcorrencia(String chatId) {
@@ -202,7 +220,9 @@ public class TelegramService {
             case "awaiting_ocorrencia_cep":
                 Endereco endereco = viaCepService.getEndereco(userText);
                 if (endereco == null || endereco.getCep() == null) {
-                    bot.execute(new SendMessage(chatId, "CEP inválido. Por favor, tente novamente."));
+                    bot.execute(new SendMessage(chatId, "CEP inválido. Por favor, tente novamente:")
+                            .replyMarkup(new ReplyKeyboardRemove()));
+                    userStates.put(chatId, "awaiting_ocorrencia_cep");
                     return;
                 }
                 ocorrencia.setCep(endereco.getCep());
@@ -211,19 +231,26 @@ public class TelegramService {
                 ocorrencia.setEstado(endereco.getUf());
                 tempOcorrencias.put(chatId, ocorrencia);
 
-                bot.execute(new SendMessage(chatId, "Por favor, confirme os dados do endereço:\n" +
+                String messageText = "Por favor, confirme os dados do endereço:\n" +
                         "Rua: " + endereco.getLogradouro() + "\n" +
                         "Cidade: " + endereco.getLocalidade() + "\n" +
                         "Estado: " + endereco.getUf() + "\n" +
-                        "Está correto? (Sim/Não)"));
+                        "Está correto? (Sim/Não)";
+
+                ReplyKeyboardMarkup keyboard = new ReplyKeyboardMarkup(
+                        new KeyboardButton("Sim"),
+                        new KeyboardButton("Não")
+                ).oneTimeKeyboard(true).resizeKeyboard(true).selective(true);
+
+                bot.execute(new SendMessage(chatId, messageText).replyMarkup(keyboard));
                 userStates.put(chatId, "awaiting_ocorrencia_confirmacao_endereco");
                 break;
             case "awaiting_ocorrencia_confirmacao_endereco":
                 if (userText.equalsIgnoreCase("sim")) {
-                    bot.execute(new SendMessage(chatId, "Digite seu nome:"));
+                    bot.execute(new SendMessage(chatId, "Digite seu nome:").replyMarkup(new ReplyKeyboardRemove()));
                     userStates.put(chatId, "awaiting_ocorrencia_nome");
                 } else {
-                    bot.execute(new SendMessage(chatId, "Digite seu CEP novamente:"));
+                    bot.execute(new SendMessage(chatId, "Digite seu CEP novamente:").replyMarkup(new ReplyKeyboardRemove()));
                     userStates.put(chatId, "awaiting_ocorrencia_cep");
                 }
                 break;
@@ -263,6 +290,19 @@ public class TelegramService {
         }
     }
 
+    private void opcaoSite(String chatId) {
+        String messageText = "Você pode visitar nosso site para mais informações.";
+        InlineKeyboardMarkup keyboard = new InlineKeyboardMarkup(
+                new InlineKeyboardButton("Visite nosso site").url("https://global-solution-front-end.vercel.app/")
+        );
+
+        bot.execute(new SendMessage(chatId, messageText).replyMarkup(keyboard));
+    }
+
+
+
+
+
 
     private void opcaoAcoesUser(String chatId, String userText) {
         String state = userStates.get(chatId);
@@ -274,6 +314,9 @@ public class TelegramService {
                 case "awaiting_password":
                 case "awaiting_telephone":
                     fluxoCadastro(chatId, userText);
+                    break;
+                case "awaiting_educacao_query":
+                    fluxoEducacao(chatId, userText);
                     break;
                 case "awaiting_ocorrencia_cep":
                 case "awaiting_ocorrencia_confirmacao_endereco":
