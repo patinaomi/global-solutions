@@ -21,18 +21,18 @@ public class FormFeedbackDaoImpl implements FormFeedbackDao {
      */
     @Override
     public void inserir(FormFeedback formFeedback) {
-        String sql = "INSERT INTO FORM_FEEDBACK(nome_feedback, tel_feedback, email_feedback, desc_feedback, data_feedback, id_usuario) " +
-                "VALUES(?, ?, ?, ?, sysdate, ?)";
+        String sql = "INSERT INTO FORM_FEEDBACK(nome_feedback, email_feedback, tel_feedback, msg_feedback, nota_feedback, data_feedback) " +
+                "VALUES(?, ?, ?, ?, ?, sysdate)";
 
         try (Connection conn = ConexaoFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             // Configura os parâmetros da instrução SQL
             stmt.setString(1, formFeedback.getNome());
-            stmt.setString(2, formFeedback.getTelefone());
-            stmt.setString(3, formFeedback.getEmail());
-            stmt.setString(4, formFeedback.getDescricao());
-            stmt.setInt(5, formFeedback.getIdUsuario());
+            stmt.setString(2, formFeedback.getEmail());
+            stmt.setLong(3, formFeedback.getTelefone());
+            stmt.setString(4, formFeedback.getMensagem());
+            stmt.setInt(5, formFeedback.getNota());
 
             // Executa a inserção
             int dadosAlterados = stmt.executeUpdate();

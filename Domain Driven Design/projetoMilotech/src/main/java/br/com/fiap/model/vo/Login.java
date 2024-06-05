@@ -12,8 +12,7 @@ public class Login {
     private String email;
     private String senha;
     private Timestamp dataLogin;
-    private int idUsuario;
-    private int idTipoLogin;
+    private boolean sucesso;
 
     //Construtor
     public Login() {
@@ -53,29 +52,18 @@ public class Login {
         this.dataLogin = dataLogin;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public boolean isSucesso() {
+        return sucesso;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public int getIdTipoLogin() {
-        return idTipoLogin;
-    }
-
-    public void setIdTipoLogin(int idTipoLogin) {
-        this.idTipoLogin = idTipoLogin;
+    public void setSucesso(boolean sucesso) {
+        this.sucesso = sucesso;
     }
 
     //ToString para formatar os dados
     @Override
     public String toString() {
         return  "\nE-mail: " + getEmail() +
-                "\nSenha: " + getSenha() +
-                "\nData do Login: " + getDataLogin() +
-                "\nId Usuário: " + getIdUsuario() +
-                "\nId Tipo Login: " + getIdTipoLogin();
+                "\nSenha: " + getSenha();
     }
 }

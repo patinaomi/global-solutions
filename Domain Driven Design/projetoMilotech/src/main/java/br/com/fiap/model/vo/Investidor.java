@@ -10,12 +10,11 @@ public class Investidor {
     private int idInvestidor;
     private String nome;
     private String email;
-    private String telefone;
+    private long telefone;
     private String nomeEmpresa;
     private double quantiaContribuida;
     private Timestamp dataInvestimento;
     private String mensagem;
-    private String tipoInvestidor;
 
     //Construtor
     public Investidor() {
@@ -47,11 +46,11 @@ public class Investidor {
         this.email = email;
     }
 
-    public String getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 
@@ -87,24 +86,14 @@ public class Investidor {
         this.mensagem = mensagem;
     }
 
-    public String getTipoInvestidor() {
-        return tipoInvestidor;
-    }
-
-    public void setTipoInvestidor(String tipoInvestidor) {
-        this.tipoInvestidor = tipoInvestidor;
-    }
-
     //ToString para formatar os dados
     @Override
     public String toString() {
-        return  "\nNome : " + getNome() +
+        return  "\nNome: " + getNome() +
                 "\nE-mail: " + getEmail() +
                 "\nTelefone: " + getTelefone() +
                 "\nNome da Empresa: " + getNomeEmpresa() +
                 "\nQuantia Contribuída: " + getQuantiaContribuida() +
-                "\nData: " + getDataInvestimento() +
-                "\nMensagem: " + getMensagem() +
-                "\nId Tipo Investidor: " + getTipoInvestidor();
+                "\nMensagem: " + getMensagem();
     }
 }

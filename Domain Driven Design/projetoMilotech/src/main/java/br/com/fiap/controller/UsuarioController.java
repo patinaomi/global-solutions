@@ -19,7 +19,6 @@ public class UsuarioController {
      * Inicializa a camada de negócio (UsuarioBo) com a implementação DAO (UsuarioDaoImpl).
      */
     public UsuarioController() {
-        // Suponha que o UsuarioDaoImpl precise de uma conexão para ser inicializado. Aqui estamos simplificando.
         this.usuarioBo = new UsuarioBo(new UsuarioDaoImpl());
     }
 

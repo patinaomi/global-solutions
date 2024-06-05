@@ -45,6 +45,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
             if (rs.next()) {
                 Usuario usuario = new Usuario();
+                usuario.setIdUsuario(rs.getInt("id_usuario"));
                 usuario.setNome(rs.getString("nome_usuario"));
                 usuario.setSobrenome(rs.getString("sobrenome_usuario"));
                 usuario.setEmail(rs.getString("email_usuario"));

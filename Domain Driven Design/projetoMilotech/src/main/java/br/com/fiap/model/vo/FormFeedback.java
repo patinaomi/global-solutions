@@ -10,9 +10,11 @@ public class FormFeedback {
     // Atributos
     private int idFeedback;
     private String nome;
-    private String telefone;
+    private long telefone;
     private String email;
-    private String descricao;
+    private String mensagem;
+
+    private int nota;
     private Timestamp data;
     private int idUsuario;
 
@@ -33,11 +35,11 @@ public class FormFeedback {
         this.nome = nome;
     }
 
-    public String getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 
@@ -49,12 +51,12 @@ public class FormFeedback {
         this.email = email;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getMensagem() {
+        return mensagem;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 
     public Timestamp getData() {
@@ -73,14 +75,21 @@ public class FormFeedback {
         this.idUsuario = idUsuario;
     }
 
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
     //ToString para formatar os dados
     @Override
     public String toString() {
         return  "\nNome: " + getNome() +
                 "\nTelefone: " + getTelefone() +
                 "\nE-mail: " + getEmail() +
-                "\nDescrição: " + getDescricao() +
-                "\nData: " + getData() +
-                "\nId Usuário: " + getIdUsuario();
+                "\nMensagem: " + getMensagem() +
+                "\nAvaliação: " + getNota();
     }
 }

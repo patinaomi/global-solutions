@@ -3,10 +3,7 @@ package br.com.fiap.resources;
 import br.com.fiap.controller.UsuarioController;
 import br.com.fiap.model.vo.Usuario;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -39,7 +36,7 @@ public class UsuarioResource {
      * @return A resposta HTTP indicando o resultado da operação.
      */
     @POST
-    @Path("/inserir")
+    @Path("/criar")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response inserirUsuario(Usuario usuario, @Context UriInfo uriInfo) {
         try {
@@ -71,6 +68,35 @@ public class UsuarioResource {
         } catch (SQLException e) {
             e.printStackTrace();
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao atualizar usuário").build();
+        }
+    }
+
+    @GET
+    @Path("/encontrar/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response encontrarUsuario(@PathParam("id") int id) {
+        try {
+            Usuario usuario = usuarioController.encontrarUsuario(id);
+            if (usuario != null) {
+                return Response.ok(usuario).build();
+            } else {
+                return Response.status(Response.Status.NOT_FOUND).entity("Usuário não encontrado").build();
+            }
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao encontrar usuário: " + e.getMessage()).build();
+        }
+    }
+
+    @DELETE
+    @Path("/deletar/{id}")
+    public Response deletarUsuario(@PathParam("id") int id) {
+        try {
+            Usuario usuario = new Usuario();
+            usuario.setIdUsuario(id);
+            usuarioController.deletar(usuario);
+            return Response.ok("Usuário deletado com sucesso").build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao deletar usuário: " + e.getMessage()).build();
         }
     }
 }

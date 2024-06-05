@@ -14,4 +14,6 @@ public interface LoginDao {
      * @param login o registro de login a ser inserido.
      */
     void inserir(Login login);
+
+    boolean verificarCredenciais(String email, String senha);
 }

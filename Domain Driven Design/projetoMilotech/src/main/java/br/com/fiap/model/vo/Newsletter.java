@@ -11,7 +11,7 @@ public class Newsletter {
     private int idNewsletter;
     private String email;
     private Timestamp dataEnvio;
-    private String status;
+    private int status;
 
     // Construtor
     public Newsletter() {
@@ -43,19 +43,17 @@ public class Newsletter {
         this.dataEnvio = dataEnvio;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
     //ToString para formatar os dados
     @Override
     public String toString() {
-        return   "\nE-mail: " + getEmail() +
-                "\nData: " + getDataEnvio() +
-                "\nStatus: " + getStatus();
+        return   "\nE-mail: " + getEmail();
     }
 }
