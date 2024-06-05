@@ -11,7 +11,7 @@ public class OcorrenciaAnimal {
     private int idOcorrencia;
     private String nome;
     private String email;
-    private String telefone;
+    private long telefone;
     private int idAnimal;
     private int idCondAnimal;
     private String firstAid;
@@ -23,9 +23,6 @@ public class OcorrenciaAnimal {
     private Timestamp data;
 
     private boolean status;
-    private String latitude;
-    private String longitude;
-    private String imagem; //vai ser uma url da imagem
 
     //Construtor
     public OcorrenciaAnimal() {
@@ -57,11 +54,11 @@ public class OcorrenciaAnimal {
         this.email = email;
     }
 
-    public String getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 
@@ -145,29 +142,7 @@ public class OcorrenciaAnimal {
         this.status = status;
     }
 
-    public String getLatitude() {
-        return latitude;
-    }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
-    }
 
     //ToString para formatar os dados
     @Override
@@ -181,9 +156,6 @@ public class OcorrenciaAnimal {
 
                 "\nEndereço: " + getRua() +
                 "\n" + getCidade() + " " + getEstado() + " --- " + getCep() +
-                "\nMensagem: " + getMensagem() +
-                "\nLatitude: " + getLatitude() +
-                "\nLongitude: " + getLongitude() +
-                "\nURL da Imagem: " + getImagem();
+                "\nMensagem: " + getMensagem();
     }
 }

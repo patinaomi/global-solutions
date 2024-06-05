@@ -58,19 +58,28 @@ public class Validacoes {
     }
 
     /**
-     * Valida um número de telefone garantindo que ele esteja no formato correto.
+     * Valida um número de telefone garantindo que ele seja numérico e tenha o comprimento correto.
      *
      * @param telefone O número de telefone a ser validado.
-     * @return true se o número de telefone estiver em um formato válido.
+     * @return true se o número de telefone é válido.
      */
     public static boolean validarTelefone(String telefone) {
-        // Regex para validar o telefone (exemplo simples, ajuste conforme necessário)
-        String regex = "^[0-9]{8,15}$"; // Exemplo: aceita números de 10 a 15 dígitos
+        // Remove caracteres não numéricos
+        String telefoneLimpo = telefone.replaceAll("[^0-9]", "");
 
-        if (telefone.matches(regex)) {
-            return true;
+        // Verifica se o telefone contém apenas números e tem entre 8 e 15 dígitos
+        String regex = "^[0-9]{8,15}$";
+
+        if (telefoneLimpo.matches(regex)) {
+            try {
+                Long.parseLong(telefoneLimpo);
+                return true;
+            } catch (NumberFormatException e) {
+                System.out.println("O telefone não é um número válido.");
+                return false;
+            }
         } else {
-            System.out.printf("O telefone %s é inválido.\n", telefone);
+            System.out.println("O telefone é inválido. Deve conter apenas números e ter entre 8 e 15 dígitos.");
             return false;
         }
     }
