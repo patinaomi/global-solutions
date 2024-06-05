@@ -89,11 +89,7 @@ CREATE TABLE Ocorrencia_Poluente (
   nome_ocorr VARCHAR2(255),
   email_ocorr VARCHAR2(80),
   tel_ocorr VARCHAR2(30),
-  id_animal INTEGER REFERENCES Animal(id_animal),
-  id_condicao_animal INTEGER REFERENCES Condicao_Animal(id_condicao),
-  first_aid_animal VARCHAR2(10),
   id_tipo_residuo INTEGER REFERENCES Tipo_Residuo(id_tipo_residuo),
-  qtd_ocorr NUMBER,
   lat_ocorr VARCHAR2(50),
   long_ocorr VARCHAR2(50),
   rua_end VARCHAR2(255),
@@ -187,3 +183,6 @@ INSERT INTO Tipo_Residuo (nome_tipo_residuo, desc_tipo_residuo)
 VALUES ('Orgânico', 'Resíduo orgânico, como restos de comida e cascas de frutas.');
 
 COMMIT;
+
+
+ 
