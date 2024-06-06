@@ -1,6 +1,7 @@
 package br.com.fiap.model.dao;
 
 import br.com.fiap.model.vo.Login;
+import br.com.fiap.model.vo.Usuario;
 
 /**
  * Interface que representa o DAO para a entidade Login.
@@ -22,5 +23,5 @@ public interface LoginDao {
      * @param senha a senha do usuário.
      * @return true se as credenciais estiverem corretas, false caso contrário.
      */
-    boolean verificarCredenciais(String email, String senha);
+    public int verificarCredenciais(String email, String senha);
 }

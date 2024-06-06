@@ -30,13 +30,14 @@ public class NewsletterResource {
     @POST
     @Path("/inscrever")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response inscreverNewsletter(Newsletter newsletter) {
         try {
             newsletterController.inscrever(newsletter);
             System.out.println("Dados recebidos: " + newsletter);
-            return Response.status(Response.Status.CREATED).entity("Inscrição de newsletter realizada com sucesso!").build();
+            return Response.status(Response.Status.CREATED).entity("{\"message\":\"Inscrição de newsletter realizada com sucesso!\"}").build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao inscrever na newsletter: " + e.getMessage()).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"error\":\"Erro ao inscrever na newsletter: " + e.getMessage() + "\"}").build();
         }
     }
 }

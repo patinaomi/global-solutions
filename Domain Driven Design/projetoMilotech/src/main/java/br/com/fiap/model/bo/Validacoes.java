@@ -48,7 +48,7 @@ public class Validacoes {
      */
     public static boolean validarSenha(String senha) {
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=])(?=\\S+$).{6,}$";
-        //ESTE METODO FOI RETIRADO DAS VALIDAÇÕES POIS O FRONT FEZ UMA VALIDAÇÃO DIFERENTE AFF
+
         if (senha.matches(regex)) {
             return true;
         } else {

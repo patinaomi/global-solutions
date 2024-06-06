@@ -2,6 +2,7 @@ package br.com.fiap.model.bo;
 
 import br.com.fiap.model.dao.LoginDao;
 import br.com.fiap.model.vo.Login;
+import br.com.fiap.model.vo.Usuario;
 
 import java.sql.SQLException;
 
@@ -44,10 +45,11 @@ public class LoginBo {
      *
      * @param email O email do usuário.
      * @param senha A senha do usuário.
-     * @return true se as credenciais estiverem corretas, false caso contrário.
+     * @return O objeto Usuario se as credenciais estiverem corretas, null caso contrário.
      * @throws SQLException Se ocorrer um erro ao verificar as credenciais no banco de dados.
      */
-    public boolean autenticarUsuario(String email, String senha) throws SQLException {
+    public int autenticarUsuario(String email, String senha) throws SQLException {
         return loginDao.verificarCredenciais(email, senha);
     }
+
 }

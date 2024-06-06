@@ -34,16 +34,18 @@ public class InvestidorResource {
     @POST
     @Path("/inserir")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON) // Garante que a resposta será em JSON
     public Response inserirInvestidor(Investidor investidor) {
         try {
             investidorController.inserir(investidor);
             System.out.println("Dados recebidos: " + investidor);
-            return Response.status(Response.Status.CREATED).entity("Investidor cadastrado com sucesso!").build();
+            return Response.status(Response.Status.CREATED).entity("{\"message\":\"Investidor cadastrado com sucesso!\"}").build();
         } catch (IllegalArgumentException e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Erro de validação: " + e.getMessage()).build();
+            System.err.println("Erro de validação: " + e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).entity("{\"error\":\"Erro de validação: " + e.getMessage() + "\"}").build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao cadastrar investidor: " + e.getMessage()).build();
+            System.err.println("Erro ao cadastrar investidor: " + e.getMessage());
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"error\":\"Erro ao cadastrar investidor: " + e.getMessage() + "\"}").build();
         }
     }
 }

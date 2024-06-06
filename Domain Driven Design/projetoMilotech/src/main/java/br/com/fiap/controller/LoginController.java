@@ -3,6 +3,7 @@ package br.com.fiap.controller;
 import br.com.fiap.model.bo.LoginBo;
 import br.com.fiap.model.dao.impl.LoginDaoImpl;
 import br.com.fiap.model.vo.Login;
+import br.com.fiap.model.vo.Usuario;
 
 import java.sql.SQLException;
 
@@ -27,21 +28,22 @@ public class LoginController {
      *
      * @param email O email do usuário.
      * @param senha A senha do usuário.
-     * @return true se as credenciais estiverem corretas, false caso contrário.
+     * @return O objeto Usuario se as credenciais estiverem corretas, null caso contrário.
      * @throws SQLException Se ocorrer um erro ao verificar as credenciais no banco de dados.
      */
-    public boolean realizarLogin(String email, String senha) throws SQLException {
-        boolean autenticado = loginBo.autenticarUsuario(email, senha);
+    public int realizarLogin(String email, String senha) throws SQLException {
+        int userId = loginBo.autenticarUsuario(email, senha);
 
         Login login = new Login();
         login.setEmail(email);
         login.setSenha(senha);
-        login.setSucesso(autenticado);
+        login.setSucesso(userId != -1);
 
         inserirLogin(login);
 
-        return autenticado;
+        return userId;
     }
+
 
     /**
      * Registra um novo login.

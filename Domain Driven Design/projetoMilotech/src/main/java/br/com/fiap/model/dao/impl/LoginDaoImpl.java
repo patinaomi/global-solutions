@@ -3,6 +3,7 @@ package br.com.fiap.model.dao.impl;
 import br.com.fiap.model.connection.ConexaoFactory;
 import br.com.fiap.model.dao.LoginDao;
 import br.com.fiap.model.vo.Login;
+import br.com.fiap.model.vo.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -49,11 +50,11 @@ public class LoginDaoImpl implements LoginDao {
      *
      * @param email o email do usuário.
      * @param senha a senha do usuário.
-     * @return true se as credenciais estiverem corretas, false caso contrário.
+     * @return O objeto Usuario se as credenciais estiverem corretas, null caso contrário.
      */
     @Override
-    public boolean verificarCredenciais(String email, String senha) {
-        String sql = "SELECT COUNT(*) FROM Usuario WHERE email_usuario = ? AND senha_usuario = ?";
+    public int verificarCredenciais(String email, String senha) {
+        String sql = "SELECT id_usuario FROM Usuario WHERE email_usuario = ? AND senha_usuario = ?";
         try (Connection conn = ConexaoFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -62,7 +63,7 @@ public class LoginDaoImpl implements LoginDao {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getInt(1) > 0;
+                    return rs.getInt(1); // Retorna o ID do usuário
                 }
             }
         } catch (SQLException e) {
@@ -70,6 +71,7 @@ public class LoginDaoImpl implements LoginDao {
             e.printStackTrace();
             throw new RuntimeException("Erro ao verificar credenciais no banco de dados.", e);
         }
-        return false;
+        return -1; // Retorna -1 se não encontrar o usuário
     }
+
 }

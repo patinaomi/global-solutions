@@ -22,7 +22,7 @@ public class OcorrenciaAnimalResource {
 
     /**
      * Construtor da classe OcorrenciaAnimalResource.
-     * Inicializa a o controlador de Ocorrência.
+     * Inicializa o controlador de Ocorrência.
      */
     public OcorrenciaAnimalResource() {
         this.ocorrenciaAnimalController = new OcorrenciaAnimalController();
@@ -48,7 +48,7 @@ public class OcorrenciaAnimalResource {
             return Response.created(builder.build()).entity(ocorrenciaAnimal).build();
         } catch (SQLException e) {
             e.printStackTrace();
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao criar ocorrência").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"message\": \"Erro ao criar ocorrência\"}").build();
         }
     }
 }

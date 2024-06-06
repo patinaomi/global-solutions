@@ -38,16 +38,19 @@ public class UsuarioResource {
     @POST
     @Path("/criar")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response inserirUsuario(Usuario usuario, @Context UriInfo uriInfo) {
         try {
             usuarioController.inserir(usuario);
             System.out.println("Dados recebidos: " + usuario);
             UriBuilder builder = uriInfo.getAbsolutePathBuilder();
             builder.path(Integer.toString(usuario.getIdUsuario()));
-            return Response.created(builder.build()).build();
+            return Response.created(builder.build()).entity("Usuário cadastrado com sucesso!").build();
         } catch (SQLException e) {
             e.printStackTrace();
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao inserir usuário").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"message\":\"Erro ao inserir usuário\"}").build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("{\"message\":\"" + e.getMessage() + "\"}").build();
         }
     }
 
@@ -60,17 +63,24 @@ public class UsuarioResource {
     @PUT
     @Path("/atualizar")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response atualizarUsuario(Usuario usuario) {
         try {
             usuarioController.atualizar(usuario);
             System.out.println("Dados recebidos: " + usuario);
-            return Response.ok("Usuário atualizado com sucesso").build();
+            return Response.ok("{\"message\":\"Usuário atualizado com sucesso\"}").build();
         } catch (SQLException e) {
             e.printStackTrace();
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao atualizar usuário").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"message\":\"Erro ao atualizar usuário\"}").build();
         }
     }
 
+    /**
+     * Endpoint para encontrar um usuário pelo ID.
+     *
+     * @param id O ID do usuário a ser encontrado.
+     * @return A resposta HTTP com o usuário encontrado ou um erro caso não seja encontrado.
+     */
     @GET
     @Path("/encontrar/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -80,24 +90,30 @@ public class UsuarioResource {
             if (usuario != null) {
                 return Response.ok(usuario).build();
             } else {
-                return Response.status(Response.Status.NOT_FOUND).entity("Usuário não encontrado").build();
+                return Response.status(Response.Status.NOT_FOUND).entity("{\"message\":\"Usuário não encontrado\"}").build();
             }
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao encontrar usuário: " + e.getMessage()).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"message\":\"Erro ao encontrar usuário: " + e.getMessage() + "\"}").build();
         }
     }
 
+    /**
+     * Endpoint para deletar um usuário pelo ID.
+     *
+     * @param id O ID do usuário a ser deletado.
+     * @return A resposta HTTP indicando o resultado da operação.
+     */
     @DELETE
     @Path("/deletar/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response deletarUsuario(@PathParam("id") int id) {
         try {
             Usuario usuario = new Usuario();
             usuario.setIdUsuario(id);
             usuarioController.deletar(usuario);
-            return Response.ok("Usuário deletado com sucesso").build();
+            return Response.ok("{\"message\":\"Usuário deletado com sucesso\"}").build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao deletar usuário: " + e.getMessage()).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"message\":\"Erro ao deletar usuário: " + e.getMessage() + "\"}").build();
         }
     }
 }
-

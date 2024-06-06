@@ -25,7 +25,7 @@ public class OcorrenciaAnimalDaoImpl implements OcorrenciaAnimalDao {
                 INSERT INTO Ocorrencia_Animal (nome_ocorr, email_ocorr, tel_ocorr, id_animal, id_condicao_animal,
                 primeiros_socorros_ocorr, cep_ocorr, estado_ocorr, cidade_ocorr, rua_ocorr, complemento_ocorr, msg_ocorr,
                 foto_ocorr, lat_ocorr, long_ocorr, data_solicitacao, status_ocorr) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-                 ?, ?, ?, ?, ?, sysdate, 1)""";
+                 ?, ?, 0, ?, ?, sysdate, 1)""";
 
         try (Connection conn = ConexaoFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

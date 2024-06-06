@@ -34,15 +34,16 @@ public class FormFeedbackResource {
     @POST
     @Path("/enviar")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response enviarFeedback(FormFeedback formFeedback) {
         try {
             formFeedbackController.inserir(formFeedback);
             System.out.println("Dados recebidos: " + formFeedback);
-            return Response.status(Response.Status.CREATED).entity("Feedback enviado com sucesso!").build();
+            return Response.status(Response.Status.CREATED).entity("{\"message\":\"Feedback enviado com sucesso!\"}").build();
         } catch (IllegalArgumentException e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Erro de validação: " + e.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST).entity("{\"error\":\"Erro de validação: " + e.getMessage() + "\"}").build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao enviar feedback: " + e.getMessage()).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"error\":\"Erro ao enviar feedback: " + e.getMessage() + "\"}").build();
         }
     }
 }

@@ -2,6 +2,7 @@ package br.com.fiap.resources;
 
 import br.com.fiap.controller.LoginController;
 import br.com.fiap.model.vo.Login;
+import br.com.fiap.model.vo.Usuario;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -37,15 +38,16 @@ public class LoginResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response autenticar(Login login) {
         try {
-            boolean autenticado = loginController.realizarLogin(login.getEmail(), login.getSenha());
+            int userId = loginController.realizarLogin(login.getEmail(), login.getSenha());
             System.out.println("Dados recebidos: " + login);
-            if (autenticado) {
-                return Response.ok().entity("Usuário autenticado com sucesso!").build();
+            if (userId != -1) {
+                return Response.ok().entity("{\"message\": \"Usuário autenticado com sucesso!\", \"id\": " + userId + "}").build();
             } else {
-                return Response.status(Response.Status.UNAUTHORIZED).entity("Credenciais inválidas.").build();
+                return Response.status(Response.Status.UNAUTHORIZED).entity("{\"message\": \"Credenciais inválidas.\"}").build();
             }
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro ao processar a solicitação.").build();
+            e.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("{\"message\": \"Erro ao processar a solicitação.\"}").build();
         }
     }
 
