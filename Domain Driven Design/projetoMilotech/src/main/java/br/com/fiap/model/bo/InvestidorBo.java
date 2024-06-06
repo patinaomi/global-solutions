@@ -3,8 +3,6 @@ package br.com.fiap.model.bo;
 import br.com.fiap.model.dao.InvestidorDao;
 import br.com.fiap.model.vo.Investidor;
 
-import java.sql.SQLException;
-
 /**
  * Classe de negócios para operações relacionadas ao Investidor.
  * Contém regras de negócio e validações antes de interagir com o DAO.
@@ -26,10 +24,9 @@ public class InvestidorBo {
      * Insere um novo investidor após aplicar as validações necessárias.
      *
      * @param investidor O objeto Investidor a ser inserido.
-     * @throws SQLException Se ocorrer um erro ao inserir o investidor.
      * @throws IllegalArgumentException Se as validações falharem.
      */
-    public void inserir(Investidor investidor) throws SQLException {
+    public void inserir(Investidor investidor) {
         if (validarInvestidor(investidor)) {
             investidorDao.inserir(investidor);
         } else {

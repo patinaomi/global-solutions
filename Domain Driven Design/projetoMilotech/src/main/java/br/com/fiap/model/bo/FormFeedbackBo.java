@@ -2,7 +2,6 @@ package br.com.fiap.model.bo;
 
 import br.com.fiap.model.dao.FormFeedbackDao;
 import br.com.fiap.model.vo.FormFeedback;
-import java.sql.SQLException;
 
 /**
  * Classe de negócios para operações relacionadas ao FormFeedback.
@@ -26,9 +25,8 @@ public class FormFeedbackBo {
      * Insere um novo feedback após aplicar validações e regras de negócios.
      *
      * @param formFeedback O objeto FormFeedback a ser inserido.
-     * @throws SQLException Se ocorrer um erro ao inserir o feedback.
      */
-    public void inserir(FormFeedback formFeedback) throws SQLException, IllegalArgumentException {
+    public void inserir(FormFeedback formFeedback) {
         if (validarFeedback(formFeedback)) {
             formFeedbackDao.inserir(formFeedback);
         } else {

@@ -7,21 +7,25 @@ import java.sql.Timestamp;
  * Contém informações sobre a solicitação, incluindo descrição, detalhes de contato, localização, data, condição e identificadores relacionados.
  */
 public class OcorrenciaAnimal {
+
     // Atributos
-    private int idOcorrencia;
+    private int idOcorrenciaAnimal;
     private String nome;
     private String email;
     private long telefone;
     private int idAnimal;
     private int idCondAnimal;
-    private String firstAid;
-    private String rua;
+    private String primeirosSocorros;
     private String cep;
-    private String cidade;
     private String estado;
+    private String cidade;
+    private String rua;
+    private String complemento;
     private String mensagem;
+    private String foto;
+    private String latitude;
+    private String longitude;
     private Timestamp data;
-
     private boolean status;
 
     //Construtor
@@ -30,12 +34,12 @@ public class OcorrenciaAnimal {
     }
 
     //Getters & Setters
-    public int getIdOcorrencia() {
-        return idOcorrencia;
+    public int getIdOcorrenciaAnimal() {
+        return idOcorrenciaAnimal;
     }
 
-    public void setIdOcorrencia(int idOcorrencia) {
-        this.idOcorrencia = idOcorrencia;
+    public void setIdOcorrenciaAnimal(int idOcorrenciaAnimal) {
+        this.idOcorrenciaAnimal = idOcorrenciaAnimal;
     }
 
     public String getNome() {
@@ -78,12 +82,44 @@ public class OcorrenciaAnimal {
         this.idCondAnimal = idCondAnimal;
     }
 
-    public String getFirstAid() {
-        return firstAid;
+    public String getPrimeirosSocorros() {
+        return primeirosSocorros;
     }
 
-    public void setFirstAid(String firstAid) {
-        this.firstAid = firstAid;
+    public void setPrimeirosSocorros(String primeirosSocorros) {
+        this.primeirosSocorros = primeirosSocorros;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getRua() {
@@ -148,11 +184,11 @@ public class OcorrenciaAnimal {
     @Override
     public String toString() {
         return  "\nNome : " + getNome() +
-                "\nTE-mail: " + getEmail() +
+                "\nE-mail: " + getEmail() +
                 "\nTelefone: " + getTelefone() +
                 "\nId Animal: " + getIdAnimal() +
                 "\nId Condição Animal: " + getIdCondAnimal() +
-                "\nPrimeiros Socorros: " + getFirstAid() +
+                "\nPrimeiros Socorros: " + getPrimeirosSocorros() +
 
                 "\nEndereço: " + getRua() +
                 "\n" + getCidade() + " " + getEstado() + " --- " + getCep() +

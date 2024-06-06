@@ -9,8 +9,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Implementação da interface LoginDao.
+ * Realiza operações de persistência para a entidade Login.
+ */
 public class LoginDaoImpl implements LoginDao {
 
+    /**
+     * Insere um novo registro de login no banco de dados.
+     *
+     * @param login o registro de login a ser inserido.
+     */
     @Override
     public void inserir(Login login) {
         String sql = "INSERT INTO Login (email_login, senha_login, sucesso_login, data_login) VALUES (?, ?, ?, sysdate)";
@@ -24,16 +33,25 @@ public class LoginDaoImpl implements LoginDao {
 
             int result = stmt.executeUpdate();
             if (result > 0) {
-                System.out.println("Registro de login " + (login.isSucesso() ? "bem-sucedido" : "falhou") + " !");
+                System.out.println("Registro de login " + (login.isSucesso() ? "bem-sucedido" : "falhou") + "!");
             } else {
                 System.err.println("Erro ao registrar tentativa de login.");
             }
         } catch (SQLException e) {
             System.err.println("Erro ao conectar ao banco de dados para inserir login.");
             e.printStackTrace();
+            throw new RuntimeException("Erro ao inserir login no banco de dados.", e);
         }
     }
 
+    /**
+     * Verifica as credenciais de login com base no email e senha fornecidos.
+     *
+     * @param email o email do usuário.
+     * @param senha a senha do usuário.
+     * @return true se as credenciais estiverem corretas, false caso contrário.
+     */
+    @Override
     public boolean verificarCredenciais(String email, String senha) {
         String sql = "SELECT COUNT(*) FROM Usuario WHERE email_usuario = ? AND senha_usuario = ?";
         try (Connection conn = ConexaoFactory.getConnection();
@@ -50,6 +68,7 @@ public class LoginDaoImpl implements LoginDao {
         } catch (SQLException e) {
             System.err.println("Erro ao verificar credenciais.");
             e.printStackTrace();
+            throw new RuntimeException("Erro ao verificar credenciais no banco de dados.", e);
         }
         return false;
     }

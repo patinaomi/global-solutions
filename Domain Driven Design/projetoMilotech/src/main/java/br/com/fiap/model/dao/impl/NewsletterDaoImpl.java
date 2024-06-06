@@ -8,7 +8,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Implementação da interface NewsletterDao.
+ * Realiza operações de persistência para a entidade Newsletter.
+ */
 public class NewsletterDaoImpl implements NewsletterDao {
+
+    /**
+     * Insere um novo registro de newsletter no banco de dados.
+     *
+     * @param newsletter o registro de newsletter a ser inserido.
+     */
     @Override
     public void inserir(Newsletter newsletter) {
         String sql = "INSERT INTO Newsletter (email_news, data_envio_news, status_news) VALUES (?, sysdate, 1)";
@@ -28,6 +38,7 @@ public class NewsletterDaoImpl implements NewsletterDao {
         } catch (SQLException e) {
             System.err.println("Erro ao salvar newsletter.");
             e.printStackTrace();
+            throw new RuntimeException("Erro ao inserir newsletter no banco de dados.", e);
         }
     }
 }

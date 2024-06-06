@@ -3,6 +3,7 @@ package br.com.fiap.controller;
 import br.com.fiap.model.bo.FormFeedbackBo;
 import br.com.fiap.model.dao.impl.FormFeedbackDaoImpl;
 import br.com.fiap.model.vo.FormFeedback;
+
 import java.sql.SQLException;
 
 /**
@@ -25,7 +26,7 @@ public class FormFeedbackController {
      * Insere um novo feedback.
      *
      * @param formFeedback O objeto FormFeedback a ser inserido.
-     * @throws SQLException Se ocorrer um erro ao inserir o feedback.
+     * @throws SQLException Se ocorrer um erro ao inserir o feedback no banco de dados.
      */
     public void inserir(FormFeedback formFeedback) throws SQLException {
         formFeedbackBo.inserir(formFeedback);

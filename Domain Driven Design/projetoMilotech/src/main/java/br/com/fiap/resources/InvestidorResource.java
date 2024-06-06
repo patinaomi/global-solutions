@@ -16,6 +16,10 @@ public class InvestidorResource {
 
     private InvestidorController investidorController;
 
+    /**
+     * Construtor da classe InvestidorResource.
+     * Inicializa o controlador de Investidor.
+     */
     public InvestidorResource() {
         this.investidorController = new InvestidorController();
     }

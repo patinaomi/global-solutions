@@ -16,6 +16,10 @@ public class LoginResource {
 
     private LoginController loginController;
 
+    /**
+     * Construtor da classe LoginResource.
+     * Inicializa o controlador de Login.
+     */
     public LoginResource() {
         this.loginController = new LoginController();
     }

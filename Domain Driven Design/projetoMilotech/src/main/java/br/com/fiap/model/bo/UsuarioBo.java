@@ -26,7 +26,7 @@ public class UsuarioBo {
      * Insere um novo usuário após aplicar validações e regras de negócios.
      *
      * @param usuario O objeto Usuario a ser inserido.
-     * @throws SQLException Se ocorrer um erro ao inserir o usuário.
+     * @throws SQLException Se ocorrer um erro ao inserir o usuário no banco de dados.
      */
     public void inserir(Usuario usuario) throws SQLException {
         validarUsuario(usuario);
@@ -37,7 +37,7 @@ public class UsuarioBo {
      * Atualiza um usuário existente após aplicar validações e regras de negócios.
      *
      * @param usuario O objeto Usuario a ser atualizado.
-     * @throws SQLException Se ocorrer um erro ao atualizar o usuário.
+     * @throws SQLException Se ocorrer um erro ao atualizar o usuário no banco de dados.
      */
     public void atualizar(Usuario usuario) throws SQLException {
         validarUsuario(usuario);
@@ -49,7 +49,7 @@ public class UsuarioBo {
      *
      * @param id O ID do usuário a ser encontrado.
      * @return O objeto Usuario encontrado ou null se nenhum usuário for encontrado.
-     * @throws SQLException Se ocorrer um erro durante a busca do usuário.
+     * @throws SQLException Se ocorrer um erro ao buscar o usuário no banco de dados.
      */
     public Usuario encontrarUsuario(int id) throws SQLException {
         return usuarioDao.encontrarUsuario(id);
@@ -59,7 +59,7 @@ public class UsuarioBo {
      * Deleta um usuário existente.
      *
      * @param usuario O objeto Usuario a ser deletado.
-     * @throws SQLException Se ocorrer um erro ao deletar o usuário.
+     * @throws SQLException Se ocorrer um erro ao deletar o usuário no banco de dados.
      */
     public void deletar(Usuario usuario) throws SQLException {
         usuarioDao.deletar(usuario);
@@ -81,6 +81,6 @@ public class UsuarioBo {
         if (!Validacoes.validarTelefone(String.valueOf(usuario.getTelefone()))) {
             throw new IllegalArgumentException("Telefone inválido.");
         }
-        // A validação de senha é assumida como sendo realizada no frontend
+        // A validação de senha está sendo feita no front-end!
     }
 }

@@ -8,11 +8,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Implementação da interface InvestidorDao.
+ * Realiza operações de persistência para a entidade Investidor.
+ */
 public class InvestidorDaoImpl implements InvestidorDao {
 
+    /**
+     * Insere um novo registro de investidor no banco de dados.
+     *
+     * @param investidor o investidor a ser inserido.
+     */
     @Override
     public void inserir(Investidor investidor) {
-        // SQL query to insert a new record into the Investidor table
         String sql = "INSERT INTO Investidor (nome_inv, email_inv, telefone_inv, nome_empresa_inv, quantia_contribuida_inv, data_investimento_inv, msg_inv) " +
                 "VALUES (?, ?, ?, ?, ?, sysdate, ?)";
 
@@ -27,7 +35,7 @@ public class InvestidorDaoImpl implements InvestidorDao {
             stmt.setDouble(5, investidor.getQuantiaContribuida());
             stmt.setString(6, investidor.getMensagem());
 
-            // Execute the insert statement
+            // Executa a inserção
             int dadosAlterados = stmt.executeUpdate();
             if (dadosAlterados > 0) {
                 System.out.println("Investidor cadastrado com sucesso!");
@@ -37,6 +45,7 @@ public class InvestidorDaoImpl implements InvestidorDao {
         } catch (SQLException e) {
             System.err.println("Erro ao inserir investidor.");
             e.printStackTrace();
+            throw new RuntimeException("Erro ao inserir investidor no banco de dados.", e);
         }
     }
 }

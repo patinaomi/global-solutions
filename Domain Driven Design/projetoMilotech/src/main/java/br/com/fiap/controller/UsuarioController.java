@@ -26,7 +26,6 @@ public class UsuarioController {
      * Insere um novo usuário.
      *
      * @param usuario O objeto Usuario a ser inserido.
-     * @throws SQLException Se ocorrer um erro ao inserir o usuário.
      */
     public void inserir(Usuario usuario) throws SQLException {
         usuarioBo.inserir(usuario);
@@ -36,7 +35,6 @@ public class UsuarioController {
      * Atualiza um usuário existente.
      *
      * @param usuario O objeto Usuario a ser atualizado.
-     * @throws SQLException Se ocorrer um erro ao atualizar o usuário.
      */
     public void atualizar(Usuario usuario) throws SQLException {
         usuarioBo.atualizar(usuario);
@@ -47,7 +45,6 @@ public class UsuarioController {
      *
      * @param id O ID do usuário a ser encontrado.
      * @return O objeto Usuario encontrado ou null se nenhum usuário for encontrado.
-     * @throws SQLException Se ocorrer um erro durante a busca do usuário.
      */
     public Usuario encontrarUsuario(int id) throws SQLException {
         return usuarioBo.encontrarUsuario(id);
@@ -57,7 +54,6 @@ public class UsuarioController {
      * Deleta um usuário existente.
      *
      * @param usuario O objeto Usuario a ser deletado.
-     * @throws SQLException Se ocorrer um erro ao deletar o usuário.
      */
     public void deletar(Usuario usuario) throws SQLException {
         usuarioBo.deletar(usuario);

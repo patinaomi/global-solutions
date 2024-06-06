@@ -16,6 +16,10 @@ public class FormFeedbackResource {
 
     private FormFeedbackController formFeedbackController;
 
+    /**
+     * Construtor da classe FormFeedbackResource.
+     * Inicializa o controlador de FormFeedback.
+     */
     public FormFeedbackResource() {
         this.formFeedbackController = new FormFeedbackController();
     }

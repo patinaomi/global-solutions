@@ -13,10 +13,13 @@ public class FormFeedback {
     private long telefone;
     private String email;
     private String mensagem;
-
     private int nota;
     private Timestamp data;
-    private int idUsuario;
+
+    // Construtor
+    public FormFeedback() {
+
+    }
 
     // Getters & Setters
     public int getIdFeedback() {
@@ -67,14 +70,6 @@ public class FormFeedback {
         this.data = data;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     public int getNota() {
         return nota;
     }
@@ -83,7 +78,11 @@ public class FormFeedback {
         this.nota = nota;
     }
 
-    //ToString para formatar os dados
+    /**
+     * Retorna uma representação em String do formulário de feedback.
+     *
+     * @return Uma String contendo todas as informações do formulário de feedback.
+     */
     @Override
     public String toString() {
         return  "\nNome: " + getNome() +

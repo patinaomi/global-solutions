@@ -26,7 +26,7 @@ public class NewsletterController {
      * Inscreve um usuário para receber newsletters.
      *
      * @param newsletter O objeto Newsletter a ser inserido.
-     * @throws SQLException Se ocorrer um erro ao inserir a newsletter.
+     * @throws SQLException Se ocorrer um erro ao inscrever a newsletter no banco de dados.
      */
     public void inscrever(Newsletter newsletter) throws SQLException {
         newsletterBo.inserir(newsletter);

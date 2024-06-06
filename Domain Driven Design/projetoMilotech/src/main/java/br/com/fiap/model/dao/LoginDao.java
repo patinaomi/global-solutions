@@ -15,5 +15,12 @@ public interface LoginDao {
      */
     void inserir(Login login);
 
+    /**
+     * Verifica as credenciais de login com base no email e senha fornecidos.
+     *
+     * @param email o email do usuário.
+     * @param senha a senha do usuário.
+     * @return true se as credenciais estiverem corretas, false caso contrário.
+     */
     boolean verificarCredenciais(String email, String senha);
 }

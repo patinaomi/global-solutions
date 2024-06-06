@@ -24,6 +24,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Serviço para interagir com o bot do Telegram, gerenciar comandos e realizar ações.
+ */
 public class TelegramService {
     private ViaCepService viaCepService;
     private TelegramBot bot;
@@ -37,6 +40,12 @@ public class TelegramService {
     private Map<String, Usuario> tempUsers = new HashMap<>();
     private Map<String, OcorrenciaAnimal> tempOcorrencias = new HashMap<>();
 
+    /**
+     * Constrói uma instância de TelegramService configurando o cliente do Telegram e os serviços dependentes.
+     *
+     * @param token        A chave API do Telegram.
+     * @param openAiService O serviço OpenAiService para gerar conteúdo de texto.
+     */
     public TelegramService(String token, OpenAiService openAiService) {
         this.bot = new TelegramBot(token);
         this.openAiService = openAiService;
@@ -48,6 +57,9 @@ public class TelegramService {
         this.viaCepService = new ViaCepService();
     }
 
+    /**
+     * Inicia o bot do Telegram e configura o listener de atualizações.
+     */
     public void startBot() {
         this.bot = new TelegramBot(Config.getProperty("telegram.api.key"));
         bot.setUpdatesListener(updates -> {
@@ -212,7 +224,7 @@ public class TelegramService {
         userStates.put(chatId, "awaiting_ocorrencia_cep");
     }
 
-    private void fluxoOcorrencia(String chatId, String userText) {
+    private void fluxoOcorrencia(String chatId, String userText) throws SQLException {
         String state = userStates.get(chatId);
         OcorrenciaAnimal ocorrencia = tempOcorrencias.getOrDefault(chatId, new OcorrenciaAnimal());
 
@@ -299,36 +311,39 @@ public class TelegramService {
         bot.execute(new SendMessage(chatId, messageText).replyMarkup(keyboard));
     }
 
-
-
-
-
-
     private void opcaoAcoesUser(String chatId, String userText) {
         String state = userStates.get(chatId);
         if (state != null) {
-            switch (state) {
-                case "awaiting_first_name":
-                case "awaiting_last_name":
-                case "awaiting_email":
-                case "awaiting_password":
-                case "awaiting_telephone":
-                    fluxoCadastro(chatId, userText);
-                    break;
-                case "awaiting_educacao_query":
-                    fluxoEducacao(chatId, userText);
-                    break;
-                case "awaiting_ocorrencia_cep":
-                case "awaiting_ocorrencia_confirmacao_endereco":
-                case "awaiting_ocorrencia_nome":
-                case "awaiting_ocorrencia_email":
-                case "awaiting_ocorrencia_telefone":
-                case "awaiting_ocorrencia_mensagem":
-                    fluxoOcorrencia(chatId, userText);
-                    break;
-                default:
-                    opcaoDefault(chatId);
-                    break;
+            try {
+                switch (state) {
+                    case "awaiting_first_name":
+                    case "awaiting_last_name":
+                    case "awaiting_email":
+                    case "awaiting_password":
+                    case "awaiting_telephone":
+                        fluxoCadastro(chatId, userText);
+                        break;
+                    case "awaiting_educacao_query":
+                        fluxoEducacao(chatId, userText);
+                        break;
+                    case "awaiting_ocorrencia_cep":
+                    case "awaiting_ocorrencia_confirmacao_endereco":
+                    case "awaiting_ocorrencia_nome":
+                    case "awaiting_ocorrencia_email":
+                    case "awaiting_ocorrencia_telefone":
+                    case "awaiting_ocorrencia_mensagem":
+                        fluxoOcorrencia(chatId, userText);
+                        break;
+                    default:
+                        opcaoDefault(chatId);
+                        break;
+                }
+            } catch (SQLException e) {
+                System.err.println("Erro de SQL: " + e.getMessage());
+                bot.execute(new SendMessage(chatId, "Erro ao processar a solicitação. Por favor, tente novamente."));
+            } catch (Exception e) {
+                System.err.println("Erro inesperado: " + e.getMessage());
+                bot.execute(new SendMessage(chatId, "Erro inesperado. Por favor, tente novamente."));
             }
         } else {
             opcaoDefault(chatId);
@@ -364,6 +379,4 @@ public class TelegramService {
     private void opcaoDefault(String chatId) {
         bot.execute(new SendMessage(chatId, "Opção inválida, por favor selecione uma opção localizada no menu inferior a esquerda."));
     }
-
-
 }

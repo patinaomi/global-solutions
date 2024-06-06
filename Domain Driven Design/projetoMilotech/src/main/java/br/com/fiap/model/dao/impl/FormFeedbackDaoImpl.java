@@ -44,6 +44,7 @@ public class FormFeedbackDaoImpl implements FormFeedbackDao {
         } catch (SQLException e) {
             System.err.println("Erro ao inserir formulário de feedback.");
             e.printStackTrace();
+            throw new RuntimeException("Erro ao inserir formulário de feedback no banco de dados.", e);
         }
     }
 }

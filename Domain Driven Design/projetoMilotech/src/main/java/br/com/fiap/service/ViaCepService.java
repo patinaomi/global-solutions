@@ -9,7 +9,18 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
+/**
+ * Serviço para buscar endereços utilizando a API do ViaCep.
+ * Esta classe fornece métodos para obter informações de endereço com base no CEP fornecido.
+ */
 public class ViaCepService {
+
+    /**
+     * Obtém informações de endereço com base no CEP fornecido.
+     *
+     * @param cep O CEP para o qual as informações de endereço são buscadas.
+     * @return O objeto Endereco contendo as informações do endereço ou null se ocorrer um erro.
+     */
     public Endereco getEndereco(String cep) {
         Endereco endereco = null;
 
@@ -20,7 +31,7 @@ public class ViaCepService {
 
             HttpEntity entity = response.getEntity();
 
-            if(entity != null){
+            if (entity != null) {
                 String result = EntityUtils.toString(entity);
 
                 Gson gson = new Gson();
@@ -36,4 +47,3 @@ public class ViaCepService {
         return endereco;
     }
 }
-

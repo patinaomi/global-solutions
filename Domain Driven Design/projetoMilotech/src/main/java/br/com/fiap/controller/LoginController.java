@@ -6,14 +6,30 @@ import br.com.fiap.model.vo.Login;
 
 import java.sql.SQLException;
 
+/**
+ * Controlador responsável por gerenciar as operações relacionadas ao login.
+ * Ele delega as operações para a camada de negócio (LoginBo).
+ */
 public class LoginController {
 
     private LoginBo loginBo;
 
+    /**
+     * Construtor da classe LoginController.
+     * Inicializa a camada de negócios com a implementação DAO (LoginDaoImpl).
+     */
     public LoginController() {
         this.loginBo = new LoginBo(new LoginDaoImpl());
     }
 
+    /**
+     * Realiza o login de um usuário com base em suas credenciais.
+     *
+     * @param email O email do usuário.
+     * @param senha A senha do usuário.
+     * @return true se as credenciais estiverem corretas, false caso contrário.
+     * @throws SQLException Se ocorrer um erro ao verificar as credenciais no banco de dados.
+     */
     public boolean realizarLogin(String email, String senha) throws SQLException {
         boolean autenticado = loginBo.autenticarUsuario(email, senha);
 
@@ -27,6 +43,12 @@ public class LoginController {
         return autenticado;
     }
 
+    /**
+     * Registra um novo login.
+     *
+     * @param login O objeto Login a ser registrado.
+     * @throws SQLException Se ocorrer um erro ao registrar o login no banco de dados.
+     */
     public void inserirLogin(Login login) throws SQLException {
         loginBo.registrarLogin(login);
     }

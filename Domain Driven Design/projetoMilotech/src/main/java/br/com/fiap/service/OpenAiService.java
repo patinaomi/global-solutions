@@ -29,7 +29,6 @@ public class OpenAiService {
      *
      * @param consulta A consulta do usuário relacionada à vida marinha ou conservação dos mares.
      * @return Um texto educacional gerado ou null se ocorrer um erro na requisição.
-     * @throws Exception Se ocorrer um erro ao fazer a requisição para a OpenAI.
      */
     public String gerarInformacao(String consulta) {
         String systemText = """
@@ -42,7 +41,6 @@ public class OpenAiService {
         Caso seja um tema que fuja do assunto ecologia marinha, diga que não sabe responder pois só
         sabe falar sobre vida marinha.
         """;
-
 
         try {
             ChatCompletionRequest completionRequest = ChatCompletionRequest.builder()

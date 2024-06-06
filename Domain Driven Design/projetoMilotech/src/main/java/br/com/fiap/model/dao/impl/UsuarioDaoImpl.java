@@ -6,8 +6,17 @@ import br.com.fiap.model.connection.ConexaoFactory;
 
 import java.sql.*;
 
+/**
+ * Implementação da interface UsuarioDao.
+ * Realiza operações de persistência para a entidade Usuario.
+ */
 public class UsuarioDaoImpl implements UsuarioDao {
 
+    /**
+     * Insere um novo registro de usuário no banco de dados.
+     *
+     * @param usuario o usuário a ser inserido.
+     */
     @Override
     public void inserir(Usuario usuario) {
         String sql = "INSERT INTO Usuario (nome_usuario, sobrenome_usuario, email_usuario, senha_usuario, tel_usuario) VALUES (?, ?, ?, ?, ?)";
@@ -34,6 +43,12 @@ public class UsuarioDaoImpl implements UsuarioDao {
         }
     }
 
+    /**
+     * Encontra um usuário no banco de dados pelo ID.
+     *
+     * @param idUsuario o ID do usuário a ser encontrado.
+     * @return o usuário encontrado ou null se não for encontrado.
+     */
     @Override
     public Usuario encontrarUsuario(int idUsuario) {
         String sql = "SELECT * FROM Usuario WHERE id_usuario = ?";
@@ -60,6 +75,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
         return null;
     }
 
+    /**
+     * Atualiza um registro de usuário no banco de dados.
+     *
+     * @param usuario o usuário a ser atualizado.
+     */
     @Override
     public void atualizar(Usuario usuario) {
         String sql = "UPDATE Usuario SET nome_usuario = ?, sobrenome_usuario = ?, email_usuario = ?, senha_usuario = ?, tel_usuario = ? WHERE id_usuario = ?";
@@ -85,6 +105,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
         }
     }
 
+    /**
+     * Deleta um registro de usuário no banco de dados.
+     *
+     * @param usuario o usuário a ser deletado.
+     */
     @Override
     public void deletar(Usuario usuario) {
         String sql = "DELETE FROM Usuario WHERE id_usuario = ?";
@@ -104,5 +129,4 @@ public class UsuarioDaoImpl implements UsuarioDao {
             e.printStackTrace();
         }
     }
-
 }

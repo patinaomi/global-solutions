@@ -21,17 +21,4 @@ public interface OcorrenciaAnimalDao {
      */
     void inserirPeloChatbot(OcorrenciaAnimal ocorrenciaAnimal);
 
-    /**
-     * Lista as ocorrências do banco de dados.
-     *
-     * @param ocorrenciaAnimal a ocorrência a ser listada.
-     */
-    void listar(OcorrenciaAnimal ocorrenciaAnimal);
-
-    /**
-     * Atualiza um registro de ocorrência no banco de dados.
-     *
-     * @param ocorrenciaAnimal a ocorrência a ser atualizada.
-     */
-    void atualizar(OcorrenciaAnimal ocorrenciaAnimal);
 }
