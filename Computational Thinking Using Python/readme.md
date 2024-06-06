@@ -3,6 +3,8 @@
 - RM552981: Patricia Naomi
 - RM553568: Sabrina Café
 
+### Vídeo: https://youtu.be/mAcKCgxrMBA
+
 # Descrição do Projeto:
    A Milotech está desenvolvendo uma solução tecnológica inovadora focada no resgate de animais marinhos em situação de risco devido a atividades antrópicas. Através de um site intuitivo e acessível, os usuários poderão chamar a empresa por meio do nosso website ou chatbot integrado ao Telegram para realizar resgates de animais encalhados, enviando a localização exata e fotos dos mesmos em perigo via integração com a API do Google Maps.
 
