@@ -80,7 +80,7 @@ CREATE TABLE Ocorrencia_Animal (
   foto_ocorr VARCHAR2(255), 
   lat_ocorr VARCHAR2(50),
   long_ocorr VARCHAR2(50),
-  data_solicitacao TIMESTAMP,
+  data_ocorr TIMESTAMP,
   status_ocorr CHAR(1) CHECK (status_ocorr IN ('0', '1')),
   id_visitante INTEGER REFERENCES Visitante(id_visitante)
 );
@@ -103,7 +103,7 @@ CREATE TABLE Ocorrencia_Poluente (
   foto_ocorr VARCHAR2(255),
   lat_ocorr VARCHAR2(50),
   long_ocorr VARCHAR2(50),
-  data_solicitacao TIMESTAMP,
+  data_ocorr TIMESTAMP,
   status_ocorr CHAR(1) CHECK (status_ocorr IN ('0', '1')),
   id_visitante INTEGER REFERENCES Visitante(id_visitante)
 );
