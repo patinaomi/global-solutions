@@ -52,7 +52,7 @@
 
 ## Visão Geral
 
-Este projeto é uma aplicação Python que permite a análise de dados relacionados à produção, despejo e destino de plásticos, bem como desperdício de plástico per capita e poluição da água nas cidades. Ele se conecta a um banco de dados Oracle para realizar consultas específicas e gerar relatórios a partir de arquivos CSV.
+Este projeto é uma aplicação Python que permite a análise de dados relacionados à produção, despejo e destino de plásticos, bem como desperdício de plástico per capita e poluição da água nas cidades. Ele se conecta a um banco de dados Oracle para realizar consultas específicas e gerar relatórios a partir de arquivos CSV. Não foi dada completa autonomia para o usuário, pois nem todas as colunas estão completas, além disso devido a quantidade de informações como nome de países disponíveis no csv teriam que ser listadas para que não houvesse problema nas buscas. 
 
 ## Funcionalidades
 
